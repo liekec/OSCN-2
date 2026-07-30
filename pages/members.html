@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members | OSCN</title>
+<link rel="stylesheet" href="../style.css">
+<script src="../scripts/members.js" defer></script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html">
+      <img src="../images/OSCN_logo_transparant.png" alt="OSCN Logo">
+    </a>
+    <button class="nav-toggle" id="navToggle">MENU</button>
+    <nav class="primary" id="primaryNav">
+      <ul>
+        <li><a href="../index.html" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10.5L12 3l9 7.5"></path>
+          <path d="M5 10v10h5v-6h4v6h5V10"></path>
+        </svg></a></li>
+        <li class="dropdown">
+          <a href="../pages/about.html">About</a>
+          <div class="dropdown-content">
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../pages/resources.html">Resources</a>
+          </div>
+        </li>
+        <li><a href="../pages/events.html">Events</a></li>
+        <li class="dropdown">
+          <a href="../pages/news.html">News</a>
+          <div class="dropdown-content">
+            <a href="../pages/news.html">News</a>
+            <a href="../pages/newsletters.html">Newsletters</a>
+          </div>
+        </li>
+        <li><a href="../pages/members.html">Members</a></li>
+        <li><a href="../pages/join.html" class="join-btn">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section class="page-hero reveal">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>OUR COMMUNITY</div>
+    <h1>Members</h1>
+    <p class="lede">Explore members of the Open Science Community Nijmegen. Find researchers, students and professionals by institute, position, expertise and interests.</p>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="wrap">
+
+    <div class="member-filters">
+      <input id="search-input" type="text" placeholder="Search members...">
+
+      <select id="institute-filter">
+        <option value="">All institutes</option>
+        <option value="Radboud University">Radboud University</option>
+        <option value="Radboud UMC">Radboud UMC</option>
+        <option value="HAN University of Applied Sciences">HAN University of Applied Sciences</option>
+        <option value="Max Planck Institute for Psycholinguistics">Max Planck Institute for Psycholinguistics</option>
+      </select>
+
+      <select id="position-filter">
+        <option value="">All positions</option>
+        <option>Assistant Professor</option>
+        <option>Associate Professor</option>
+        <option>Full Professor</option>
+        <option>PhD Candidate</option>
+        <option>Postdoctoral Researcher</option>
+        <option>Researcher</option>
+        <option>Teacher</option>
+        <option>Support Staff / Organisational Professional</option>
+        <option>Student</option>
+      </select>
+
+      <select id="expertise-filter">
+        <option value="">All expertise</option>
+        <option>Citizen Science</option>
+        <option>FAIR</option>
+        <option>GitHub</option>
+        <option>Open Access</option>
+        <option>Open Code</option>
+        <option>Open Data</option>
+        <option>Open Education</option>
+        <option>Open Review</option>
+        <option>Open Software</option>
+        <option>Open Source</option>
+        <option>Preregistration</option>
+        <option>Public Engagement</option>
+        <option>Registered Reports</option>
+        <option>Replication</option>
+        <option>Reproducibility</option>
+        <option>Research Integrity</option>
+        <option>Rewards &amp; Recognition</option>
+        <option>Scholarly Publishing</option>
+        <option>Transparent Reporting</option>
+      </select>
+
+      <select id="interest-filter">
+        <option value="">All interests</option>
+        <option>Citizen Science</option>
+        <option>FAIR</option>
+        <option>GitHub</option>
+        <option>Open Access</option>
+        <option>Open Code</option>
+        <option>Open Data</option>
+        <option>Open Education</option>
+        <option>Open Review</option>
+        <option>Open Software</option>
+        <option>Open Source</option>
+        <option>Preregistration</option>
+        <option>Public Engagement</option>
+        <option>Registered Reports</option>
+        <option>Replication</option>
+        <option>Reproducibility</option>
+        <option>Research Integrity</option>
+        <option>Rewards &amp; Recognition</option>
+        <option>Scholarly Publishing</option>
+        <option>Transparent Reporting</option>
+      </select>
+    </div>
+
+    <div class="members-grid"></div>
+
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo" href="../index.html">
+        <img src="../images/OSCN_logo_transparant.png" alt="OSCN Logo">
+      </a>
+      <p>Open Science Community Nijmegen promotes open, transparent and reproducible research through community building and collaboration.</p>
+    </div>
+    <div class="flinks">
+      <h3>Navigate</h3>
+      <a href="../pages/about.html">About</a>
+      <a href="../pages/resources.html">Resources</a>
+      <a href="../pages/events.html">Events</a>
+      <a href="../pages/news.html">News</a>
+      <a href="../pages/newsletters.html">Newsletters</a>
+      <a href="../pages/members.html">Members</a>
+      <a href="../pages/contact.html">Contact</a>
+      <a href="../pages/join.html">Join</a>
+    </div>
+    <div class="flinks">
+      <h3>Contact</h3>
+      <a href="mailto:openscience.nijmegen@gmail.com">openscience.nijmegen@gmail.com</a>
+      <a class="social-link" href="https://www.linkedin.com/company/open-science-community-nijmegen/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1C12.9 8.8 14.7 7.7 17 7.7c5 0 5.9 3.3 5.9 7.6V24h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-5V8z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div>
+      <h3>Stay updated</h3>
+      <form method="post" action="https://open-science-community-nijmegen.email-provider.eu/subscribe/post/index.php" accept-charset="utf-8" class="footer-form form-op7pq9fkox">
+        <input type="hidden" name="next" value="" />
+        <input type="hidden" name="a" value="ohz7mrmpse" />
+        <input type="hidden" name="l" value="op7pq9fkox" />
+        <label for="id-Kz6LqtiXnQ">Email *</label>
+        <input name="Kz6LqtiXnQ" id="id-Kz6LqtiXnQ" type="email" placeholder="you@example.com" required>
+        <label for="id-P3Px8y6G0Y">First name *</label>
+        <input name="P3Px8y6G0Y" id="id-P3Px8y6G0Y" type="text" placeholder="First name" required>
+        <label for="id-OTxNlZSNlG">Last name *</label>
+        <input name="OTxNlZSNlG" id="id-OTxNlZSNlG" type="text" placeholder="Last name" required>
+        <input type="email" id="email" name="email" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
+        <input type="submit" value="Subscribe">
+      </form>
+      <script src="https://open-science-community-nijmegen.email-provider.eu/subscribe/check/validate.js"></script>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Open Science Community Nijmegen</span>
+    <span><a href="#">Privacy</a> · <a href="#">Cookies</a></span>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
