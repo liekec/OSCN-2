@@ -315,3 +315,37 @@ footer.site .flinks a:hover{color:#fff;}
   .newsletter-item{flex-direction:column;align-items:flex-start;}
   .member-filters{grid-template-columns:1fr;}
 }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+
+.form-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.form-grid .form-card{
+  max-width:none;width:100%;
+}
+.form-card h2{
+  font-size:19px;margin-bottom:6px;
+}
+.form-card textarea{
+  width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+  font:14px 'Inter',sans-serif;background:var(--cream);resize:vertical;
+}
+
+@media (max-width:680px){
+  .form-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- contact thank-you page ---------- */
+.thanks-wrap{
+  text-align:center;max-width:560px;
+}
+.thanks-icon{
+  width:60px;height:60px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin:0 auto 18px;
+}
+.thanks-wrap .btn{margin-top:12px;}
