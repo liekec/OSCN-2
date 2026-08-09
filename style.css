@@ -316,7 +316,9 @@ footer.site .flinks a:hover{color:#fff;}
   .member-filters{grid-template-columns:1fr;}
 }
 
-/* ============ CONTACT PAGE  ============= */
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
 
 .form-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:24px;
@@ -327,20 +329,14 @@ footer.site .flinks a:hover{color:#fff;}
 .form-card h2{
   font-size:19px;margin-bottom:6px;
 }
-```css
 .form-card textarea{
-  width:100%;
-  height:140px;
-  padding:12px 14px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  font:14px 'Inter',sans-serif;
-  background:var(--cream);
-  resize:vertical;
-  box-sizing:border-box;
+  width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+  font:14px 'Inter',sans-serif;background:var(--cream);resize:vertical;
+  min-height:160px;
 }
-```
-
+.form-card input[type=submit]{
+  display:block;width:100%;
+}
 
 @media (max-width:680px){
   .form-grid{grid-template-columns:1fr;}
