@@ -374,14 +374,3 @@ footer.site .flinks a:hover{color:#fff;}
   font-size:26px;margin:0 auto 18px;
 }
 .thanks-wrap .btn{margin-top:12px;}
-
-/* ---------- join page ---------- */
-.join-cta{padding-top:32px;}
-.join-form-card{
-  max-width:600px;margin:0 auto;text-align:center;
-}
-.join-form-card p a{color:var(--blue);font-weight:700;}
-.join-form-card .btn{margin-top:6px;}
-.join-form-note{
-  font-size:13px;color:var(--muted);margin-top:18px;margin-bottom:0;
-}
