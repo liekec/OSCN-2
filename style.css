@@ -182,7 +182,7 @@ section.block.alt{background:var(--cream);}
 /* ---------- team bios (about page) ---------- */
 .bio-grid{display:grid;gap:26px;}
 .bio-card{
-  display:grid;grid-template-columns:200px 1fr;gap:26px;
+  display:grid;grid-template-columns:170px 1fr;gap:26px;
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;align-items:start;
 }
