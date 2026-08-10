@@ -126,7 +126,7 @@ nav.primary > ul > li > a:hover{color:var(--blue);}
 .page-hero .lede{color:var(--ink-soft);max-width:60ch;font-size:16px;}
 
 /* ---------- section scaffolding ---------- */
-section.block{padding:76px 0;}
+section.block{padding:70px 0;}
 section.block.alt{background:var(--cream);}
 .section-head{max-width:640px;margin-bottom:44px;}
 .section-head h2{font-size:clamp(24px,3vw,32px);}
