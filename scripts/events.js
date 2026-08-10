@@ -37,15 +37,17 @@ function renderEvents() {
   const upcomingList = document.getElementById('upcomingEventsList');
   const pastList = document.getElementById('pastEventsList');
 
-  if (upcomingList) {
-    upcomingList.innerHTML = upcoming.length
-      ? upcoming.map(ev => eventCard(ev, false)).join('')
-      : '<p class="no-events">No upcoming events right now — check back soon!</p>';
-  }
+if (upcomingList) {
+  upcomingList.innerHTML = upcoming.length
+    ? upcoming.map(ev => eventCard(ev, false)).join('')
+    : '<p class="no-events">There are currently no events planned.</p>';
+}
 
-  if (pastList) {
-    pastList.innerHTML = past.map(ev => eventCard(ev, true)).join('');
-  }
+if (pastList) {
+  pastList.innerHTML = past.length
+    ? past.map(ev => eventCard(ev, true)).join('')
+    : '<p class="no-events">There are currently no past events listed.</p>';
+}
 }
 
 function eventCard(ev, isPast) {
