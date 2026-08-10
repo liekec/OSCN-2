@@ -276,14 +276,70 @@ section.block.alt{background:var(--cream);}
   font:13.5px 'Inter',sans-serif;background:#fff;color:var(--ink);
 }
 .member-filters input:focus,.member-filters select:focus{outline:2px solid var(--blue);outline-offset:1px;}
-.members-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.member-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
-.member-card .avatar{width:64px;height:64px;font-size:16px;margin:0 0 14px;}
-.member-card h3{font-size:15.5px;margin-bottom:2px;}
-.member-card .role{font-size:12.5px;color:var(--blue);font-weight:700;margin-bottom:2px;display:block;}
-.member-card .inst{font-size:12px;color:var(--muted);margin-bottom:12px;}
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;}
-.tag-pill{font-size:11px;font-weight:700;background:var(--sky);color:var(--navy);padding:4px 9px;border-radius:20px;}
+
+.members-intro{margin-bottom:40px;}
+
+.members-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+.member-card{
+  background:#fff;
+  border-radius:16px;
+  padding:35px;
+  box-shadow:0 8px 24px rgba(0,32,96,.07);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.member-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 30px rgba(0,32,96,.14);
+}
+
+.member-photo{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  display:block;margin:0 auto 20px auto;
+  border:4px solid #fff;box-shadow:0 6px 18px rgba(0,32,96,.18);
+}
+
+.member-card h3{
+  text-align:center;
+  color:var(--navy);
+  font-size:1.5rem;
+  margin-bottom:12px;
+}
+.member-card h3::after{
+  content:"";display:block;width:60px;height:1px;
+  background:var(--line);margin:14px auto 0;
+}
+
+.member-card h4{
+  margin-top:18px;margin-bottom:5px;
+  color:var(--blue);
+  font-size:1rem;font-weight:600;
+}
+
+.member-card p{
+  font-family:'Inter',sans-serif;
+  font-size:.95rem;font-weight:400;line-height:1.7;
+  color:var(--ink-soft);
+}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tags span{
+  background:var(--sky);color:var(--blue);
+  border-radius:999px;padding:5px 12px;font-size:.82rem;font-weight:600;
+}
+
+.member-email{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--line);
+  font-size:.9rem;color:var(--ink-soft);
+}
+.member-email a{color:var(--terracotta);text-decoration:none;font-weight:600;}
+.member-email a:hover{text-decoration:underline;}
+
 .members-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:40px 0;}
 
 /* ---------- footer ---------- */
