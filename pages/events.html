@@ -54,27 +54,19 @@
   <div class="wrap">
     <div class="events-list">
 
-      <article class="event reveal">
-        <div class="event-date"><span class="month">SEPT</span><span class="day">17</span></div>
-        <div class="event-content">
-          <span class="event-tag workshop">Workshop</span>
-          <h3>Coding Café</h3>
-          <p>Learn all about metadata and get hands-on experience.</p>
-          <div class="event-meta">12:00–13:00</div>
-        </div>
-      </article>
+<section class="block reveal">
+  <div class="wrap">
+    <div class="events-list" id="upcomingEventsList"></div>
+  </div>
+</section>
 
-      <article class="event reveal">
-        <div class="event-date"><span class="month">SEPT</span><span class="day">17</span></div>
-        <div class="event-content">
-          <span class="event-tag meetup">Meet-up</span>
-          <h3>Community Café</h3>
-          <p>A celebration of the Open Science Week with short member pitches.</p>
-          <div class="event-meta">16:00–18:00</div>
-        </div>
-      </article>
-
+<section class="block reveal past-events-section">
+  <div class="wrap">
+    <div class="section-header-row">
+      <h2>Previous Events</h2>
+      <button class="toggle-past" id="togglePast" aria-expanded="false">Show past events</button>
     </div>
+    <div class="events-list past-events" id="pastEventsList" hidden></div>
   </div>
 </section>
 
