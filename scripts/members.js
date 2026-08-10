@@ -1,129 +1,84 @@
-// ============================================================
-// OSCN member directory
-// Add new members by adding an object to the MEMBERS array below.
-// institute must match one of the <option> values in the
-// "institute-filter" select on members.html (add a new <option>
-// there if you add a member from a new institute).
-// ============================================================
+let allMembers = [];
 
-const MEMBERS = [
-  {
-    name: "Anita Eerland",
-    institute: "Radboud University",
-    position: "Associate Professor",
-    expertise: ["Research Integrity", "Open Education"],
-    interests: ["Preregistration", "Open Data"],
-  },
-  {
-    name: "Maximiliano Cenci",
-    institute: "Radboud UMC",
-    position: "Assistant Professor",
-    expertise: ["Research Integrity"],
-    interests: ["Reproducibility", "Open Data"],
-  },
-  {
-    name: "Lieke Corbeek",
-    institute: "Radboud University",
-    position: "Student",
-    expertise: [],
-    interests: ["Open Science Communication", "Public Engagement"],
-  },
-  {
-    name: "Tim Middeldorp",
-    institute: "Radboud University",
-    position: "Support Staff / Organisational Professional",
-    expertise: ["Scholarly Publishing"],
-    interests: ["Transparent Reporting", "Public Engagement"],
-  },
-  {
-    name: "Karin Kastens",
-    institute: "Max Planck Institute for Psycholinguistics",
-    position: "Support Staff / Organisational Professional",
-    expertise: ["Open Access", "Scholarly Publishing"],
-    interests: ["FAIR", "Open Access"],
-  },
-];
+fetch("https://opensheet.elk.sh/1-xLa6VPYhSVbPR40bHJCF8nnQgSGWAOa3sb4yjjVfkU/1")
+.then(response => response.json())
+.then(data => {
+  allMembers = data.map(member => ({
+    firstName: member.Name,
+    lastName: member["Last name"],
+    email: member["E-mail"],
+    position: member.Position,
+    institute: member.Institute,
+    unit: member["Faculty / Department"],
+    expertise: member.Expertise
+      ? member.Expertise.split(",").map(item => item.trim())
+      : [],
+    interest: member.Interest
+      ? member.Interest.split(",").map(item => item.trim())
+      : [],
+    photo: member["Profile photo"]
+      ? "../images/members/" + member["Profile photo"]
+      : "../images/members/default-profile.png"
+  }));
+  displayMembers(allMembers);
+});
 
-function initials(name) {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
+function displayMembers(members) {
+  const container = document.getElementById("membersGrid");
+  container.innerHTML = "";
 
-function renderMembers(list) {
-  const grid = document.querySelector(".members-grid");
-  if (!grid) return;
-
-  if (!list.length) {
-    grid.innerHTML = '<div class="members-empty">No members match your search yet.</div>';
+  if (members.length === 0) {
+    container.innerHTML = '<p class="members-empty">No members match your search.</p>';
     return;
   }
 
-  grid.innerHTML = list
-    .map((m) => {
-      const tags = [...m.expertise, ...m.interests]
-        .map((t) => `<span class="tag-pill">${t}</span>`)
-        .join("");
-      return `
-        <article class="member-card reveal">
-          <div class="avatar">${initials(m.name)}</div>
-          <h3>${m.name}</h3>
-          <span class="role">${m.position}</span>
-          <div class="inst">${m.institute}</div>
-          <div class="tag-row">${tags}</div>
-        </article>`;
-    })
-    .join("");
-
-  // Re-run scroll reveal for newly injected cards
-  const revealEls = grid.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    revealEls.forEach((el) => io.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
-  }
+  members.forEach(member => {
+    const card = document.createElement("div");
+    card.className = "member-card";
+    card.innerHTML = `
+      <div class="avatar">
+        <img src="${member.photo}" alt="${member.firstName} ${member.lastName}">
+      </div>
+      <h3>${member.firstName} ${member.lastName}</h3>
+      <span class="role">${member.position}</span>
+      <div class="inst">${member.institute}${member.unit ? " · " + member.unit : ""}</div>
+      <div class="tag-row">
+        ${member.expertise.length
+          ? member.expertise.map(item => `<span class="tag-pill">${item}</span>`).join("")
+          : ""
+        }
+        ${member.interest.length
+          ? member.interest.map(item => `<span class="tag-pill">${item}</span>`).join("")
+          : ""
+        }
+      </div>
+    `;
+    container.appendChild(card);
+  });
 }
 
-function applyFilters() {
-  const search = (document.getElementById("search-input")?.value || "").toLowerCase().trim();
-  const institute = document.getElementById("institute-filter")?.value || "";
-  const position = document.getElementById("position-filter")?.value || "";
-  const expertise = document.getElementById("expertise-filter")?.value || "";
-  const interest = document.getElementById("interest-filter")?.value || "";
+function filterMembers() {
+  const search = document.getElementById("search-input").value.toLowerCase();
+  const institute = document.getElementById("institute-filter").value;
+  const position = document.getElementById("position-filter").value;
+  const expertise = document.getElementById("expertise-filter").value;
+  const interest = document.getElementById("interest-filter").value;
 
-  const filtered = MEMBERS.filter((m) => {
-    if (search && !m.name.toLowerCase().includes(search)) return false;
-    if (institute && m.institute !== institute) return false;
-    if (position && m.position !== position) return false;
-    if (expertise && !m.expertise.includes(expertise)) return false;
-    if (interest && !m.interests.includes(interest)) return false;
-    return true;
+  const filtered = allMembers.filter(member => {
+    return (
+      `${member.firstName} ${member.lastName}`.toLowerCase().includes(search) &&
+      (institute === "" || member.institute === institute) &&
+      (position === "" || member.position === position) &&
+      (expertise === "" || member.expertise.includes(expertise)) &&
+      (interest === "" || member.interest.includes(interest))
+    );
   });
 
-  renderMembers(filtered);
+  displayMembers(filtered);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderMembers(MEMBERS);
-
-  ["search-input", "institute-filter", "position-filter", "expertise-filter", "interest-filter"].forEach(
-    (id) => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener("input", applyFilters);
-    }
-  );
-});
+document.getElementById("search-input").addEventListener("input", filterMembers);
+document.getElementById("institute-filter").addEventListener("change", filterMembers);
+document.getElementById("position-filter").addEventListener("change", filterMembers);
+document.getElementById("expertise-filter").addEventListener("change", filterMembers);
+document.getElementById("interest-filter").addEventListener("change", filterMembers);
