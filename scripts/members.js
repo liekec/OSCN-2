@@ -36,22 +36,26 @@ function displayMembers(members) {
     const card = document.createElement("div");
     card.className = "member-card";
     card.innerHTML = `
-      <div class="avatar">
-        <img src="${member.photo}" alt="${member.firstName} ${member.lastName}">
-      </div>
+      <img class="member-photo" src="${member.photo}" alt="${member.firstName} ${member.lastName}">
       <h3>${member.firstName} ${member.lastName}</h3>
-      <span class="role">${member.position}</span>
-      <div class="inst">${member.institute}${member.unit ? " · " + member.unit : ""}</div>
-      <div class="tag-row">
+      <p class="member-position"><strong>Position:</strong><br>${member.position}</p>
+      <p><strong>Institute:</strong><br>${member.institute}</p>
+      <p><strong>Faculty / Department:</strong><br>${member.unit || "Not specified"}</p>
+      <h4>Expertise</h4>
+      <div class="tags">
         ${member.expertise.length
-          ? member.expertise.map(item => `<span class="tag-pill">${item}</span>`).join("")
-          : ""
-        }
-        ${member.interest.length
-          ? member.interest.map(item => `<span class="tag-pill">${item}</span>`).join("")
-          : ""
+          ? member.expertise.map(item => `<span>${item}</span>`).join("")
+          : "<span>No expertise listed</span>"
         }
       </div>
+      <h4>Interest</h4>
+      <div class="tags">
+        ${member.interest.length
+          ? member.interest.map(item => `<span>${item}</span>`).join("")
+          : "<span>No interests listed</span>"
+        }
+      </div>
+      <p class="member-email">✉ ${member.email}</p>
     `;
     container.appendChild(card);
   });
