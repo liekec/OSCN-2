@@ -186,7 +186,7 @@ section.block.alt{background:var(--cream);}
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;align-items:start;
 }
-.bio-card .avatar{width:180px;height:180px;font-size:22px;margin:0;}
+.bio-card .avatar{width:150px;height:150px;font-size:22px;margin:0;}
 .bio-card h3{font-size:18px;margin-bottom:2px;}
 .bio-card .role{font-size:13px;color:var(--blue);font-weight:700;margin-bottom:10px;display:block;}
 .bio-card p{font-size:14px;margin-bottom:0;}
