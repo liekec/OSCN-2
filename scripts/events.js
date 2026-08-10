@@ -54,7 +54,7 @@ function eventCard(ev, isPast) {
   const startTime = ev._date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
   return `
-    <article class="event reveal${isPast ? ' past' : ''}">
+    <article class="event${isPast ? ' past' : ''}">
       <div class="event-date"><span class="month">${month}</span><span class="day">${day}</span></div>
       <div class="event-content">
         <span class="event-tag ${ev.tag}">${ev.tagLabel}</span>
