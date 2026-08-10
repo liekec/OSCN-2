@@ -95,7 +95,7 @@ nav.primary > ul > li > a:hover{color:var(--blue);}
 /* ---------- hero ---------- */
 .hero{
   background:linear-gradient(180deg,var(--sky) 0%,var(--sky-deep) 100%);
-  padding:84px 0 84px;
+  padding:96px 0 84px;
   overflow:hidden;
 }
 .hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
@@ -121,7 +121,7 @@ nav.primary > ul > li > a:hover{color:var(--blue);}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.55;}}
 
 /* ---------- page hero (inner pages) ---------- */
-.page-hero{background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 100%);padding:70px 0 56px;}
+.page-hero{background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 100%);padding:70px 0 30px;}
 .page-hero h1{font-size:clamp(30px,4vw,42px);margin-bottom:14px;}
 .page-hero .lede{color:var(--ink-soft);max-width:60ch;font-size:16px;}
 
