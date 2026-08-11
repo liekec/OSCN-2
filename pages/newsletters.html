@@ -5,6 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Newsletters | OSCN</title>
 <link rel="stylesheet" href="../style.css">
+<style>
+  /* --- Extra styling voor archive/subscribe layout en de jaar-dropdown --- */
+  .archive-subscribe-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:800px){
+    .archive-subscribe-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .newsletter-archive-toggle{
+    margin-top:18px;
+    border:1px solid rgba(0,0,0,0.12);
+    border-radius:8px;
+    padding:4px 16px;
+  }
+  .newsletter-archive-toggle summary{
+    cursor:pointer;
+    font-weight:600;
+    padding:12px 0;
+    list-style:none;
+  }
+  .newsletter-archive-toggle summary::-webkit-details-marker{
+    display:none;
+  }
+  .newsletter-archive-toggle summary::after{
+    content:"▾";
+    float:right;
+    transition:transform 0.2s ease;
+  }
+  .newsletter-archive-toggle[open] summary::after{
+    transform:rotate(180deg);
+  }
+  .archive-year-group{
+    margin-bottom:14px;
+  }
+  .archive-year-group h4{
+    margin:0 0 8px;
+    font-size:0.95em;
+    opacity:0.75;
+  }
+</style>
 </head>
 <body>
 <header class="site">
@@ -51,80 +97,101 @@
 </section>
 
 <section class="block reveal">
-  <div class="wrap" style="display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start;">
+  <div class="wrap archive-subscribe-grid">
     <div>
       <div class="section-head">
         <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>ARCHIVE</div>
         <h2>All issues</h2>
-            <div class="newsletter-list">
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter May 2026</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_290526.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
       </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter April 2026</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_230426.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+
+      <!-- 2026: direct zichtbaar -->
+      <div class="newsletter-list">
+        <div class="newsletter-item reveal">
+          <span class="fname">Newsletter May 2026</span>
+          <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_290526.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+        </div>
+        <div class="newsletter-item reveal">
+          <span class="fname">Newsletter April 2026</span>
+          <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_230426.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+        </div>
+        <div class="newsletter-item reveal">
+          <span class="fname">Newsletter March 2026</span>
+          <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_160326.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+        </div>
+        <div class="newsletter-item reveal">
+          <span class="fname">Newsletter February 2026</span>
+          <a class="dl" href="../PDF/Newsletters/oscnfebruarynewsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+        </div>
+        <div class="newsletter-item reveal">
+          <span class="fname">Newsletter January 2026</span>
+          <a class="dl" href="../PDF/Newsletters/oscnjanuarynewsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+        </div>
       </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter March 2026</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_160326.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-       <div class="newsletter-item reveal">
-         <span class="fname">Newsletter February 2026</span>
-         <a class="dl" href="../PDF/Newsletters/oscnfebruarynewsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter January 2026</span>
-        <a class="dl" href="../PDF/Newsletters/oscnjanuarynewsletter.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter December 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_181225.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter November 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_141125%20%282%29.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter October 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_031025.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter August 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_August_2025%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter May 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_270525.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter April 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_170425.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter March 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_100325.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter January 2025</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_310125.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter December 2024</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_201224.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter November 2024</span>
-        <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_281124.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter October 2024</span>
-        <a class="dl" href="../PDF/Newsletters/SCN_Newsletter_301024.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
-      <div class="newsletter-item reveal">
-        <span class="fname">Newsletter September 2024</span>
-        <a class="dl" href="../PDF/Newsletters/2024-09-OSCN_is_back_in_business.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
-      </div>
+
+      <!-- 2025 + 2024: in dropdown -->
+      <details class="newsletter-archive-toggle">
+        <summary>Show earlier newsletters (2025 &amp; 2024)</summary>
+
+        <div class="archive-year-group">
+          <h4>2025</h4>
+          <div class="newsletter-list">
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter December 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_181225.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter November 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_141125%20%282%29.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter October 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_031025.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter August 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_August_2025%20%281%29.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter May 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_270525.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter April 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_170425.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter March 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_100325.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter January 2025</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_310125.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-year-group">
+          <h4>2024</h4>
+          <div class="newsletter-list">
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter December 2024</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_201224.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter November 2024</span>
+              <a class="dl" href="../PDF/Newsletters/OSCN_Newsletter_281124.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter October 2024</span>
+              <a class="dl" href="../PDF/Newsletters/SCN_Newsletter_301024.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+            <div class="newsletter-item reveal">
+              <span class="fname">Newsletter September 2024</span>
+              <a class="dl" href="../PDF/Newsletters/2024-09-OSCN_is_back_in_business.pdf" target="_blank" rel="noopener noreferrer">Open PDF →</a>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div>
