@@ -5,6 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources | OSCN</title>
 <link rel="stylesheet" href="../style.css">
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+
+  a.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.9rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--navy, #1B2A4A);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  a.info-card:hover .info-icon,
+  a.info-card:focus-visible .info-icon { transform: translateY(-3px); }
+
+  .info-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  a.info-card h3 { font-size: 0.95rem; margin: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.info-card:hover .info-icon { transform: none; }
+  }
+</style>
 </head>
 <body>
 <header class="site">
@@ -41,24 +89,91 @@
   </div>
 </header>
 
-
 <section class="page-hero reveal">
   <div class="wrap">
     <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>TOOLS &amp; GUIDANCE</div>
     <h1>Resources</h1>
-    <p class="lede">A starting point for putting Open Science into practice — for every stage of the research cycle.</p>
+    <p class="lede">A starting point for putting Open Science into practice — for every stage of the research cycle. Click an icon to learn more.</p>
   </div>
 </section>
 
 <section class="block reveal">
   <div class="wrap">
     <div class="card-grid">
-      <div class="info-card reveal"><h3>Preregistration</h3><p>Templates and platforms for registering your hypotheses and analysis plan before data collection begins.</p></div>
-      <div class="info-card reveal"><h3>FAIR data</h3><p>Guidance on making research data Findable, Accessible, Interoperable and Reusable.</p></div>
-      <div class="info-card reveal"><h3>Open access publishing</h3><p>An overview of open access routes and where to check journal and publisher policies.</p></div>
-      <div class="info-card reveal"><h3>Research software</h3><p>Practices for sharing code and software so your analyses can be reproduced by others.</p></div>
-      <div class="info-card reveal"><h3>Research integrity</h3><p>Frameworks and contacts for questions about responsible conduct of research.</p></div>
-      <div class="info-card reveal"><h3>Incubator program</h3><p>A free 14-week programme for setting up, running and maintaining a local Open Science Community.</p></div>
+      <a class="info-card reveal" href="resources-detail.html?topic=reproducibility">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8"/><path d="M20 4v4h-4"/></svg></div>
+        <h3>Reproducibility</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=preregistration">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="12" r="8"/><path d="M11 7v5l3 2"/><path d="M17 5.5l3-1"/></svg></div>
+        <h3>Preregistration</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=power-analysis">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><rect x="19" y="10" width="2" height="4"/><path d="M6 12h2M10 12h2"/></svg></div>
+        <h3>Power Analysis</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=registered-reports">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><text x="2" y="17" font-size="15" font-weight="700" font-family="Arial, sans-serif" fill="currentColor" stroke="none">RR</text></svg></div>
+        <h3>Registered Reports</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=open-fair-data">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/><path d="M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg></div>
+        <h3>Open & FAIR Data</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=open-fair-code">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><text x="2" y="10" font-size="8" font-family="monospace" font-weight="700" fill="currentColor" stroke="none">1010</text><text x="2" y="19" font-size="8" font-family="monospace" font-weight="700" fill="currentColor" stroke="none">1010</text></svg></div>
+        <h3>Open & FAIR Code</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=floss-for-research">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><rect x="7" y="4" width="8" height="5"/><rect x="7" y="14" width="10" height="6"/></svg></div>
+        <h3>Free, Libre & Open Source Software for Research</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=open-lab-notebooks">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="1"/><path d="M2 19h20"/></svg></div>
+        <h3>Open Lab Notebooks</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=reproducible-articles">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+        <h3>Reproducible Articles</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=preprints">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M15 3v5h5"/></svg></div>
+        <h3>Preprints</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=open-access">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></div>
+        <h3>Open Access</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=peer-review">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></div>
+        <h3>Peer Review</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=teaching-os">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="10" height="7" rx="1"/><circle cx="18" cy="9" r="2"/><path d="M15 19c0-2.5 1.5-4 3-4s3 1.5 3 4"/></svg></div>
+        <h3>Teaching OS</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=open-education">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4L2 9l10 5 10-5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg></div>
+        <h3>Open Education</h3>
+      </a>
+
+      <a class="info-card reveal" href="resources-detail.html?topic=public-engagement">
+        <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M10 20c0-3 2.7-5 6-5s6 2 6 5"/></svg></div>
+        <h3>Public Engagement</h3>
+      </a>
     </div>
   </div>
 </section>
