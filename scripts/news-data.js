@@ -5,7 +5,7 @@
 function renderNewsCard(article, prefix) {
   return `
     <article class="news-card reveal">
-      <div class="news-thumb" style="background-image:url('${article.image}'); background-size:cover; background-position:center;"></div>
+      <div class="news-thumb" style="background-image:url('${prefix}${article.image}'); background-size:cover; background-position:center;"></div>
       <div class="news-body">
         <div class="news-date">${article.date}</div>
         <h3>${article.title}</h3>
