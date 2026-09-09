@@ -205,10 +205,11 @@
 </footer>
 
 <script src="scripts/news-data.js"></script>
+<script src="script.js"></script>
 <script>
   const latest = newsArticles.slice(0, 3);
   document.getElementById("index-news-grid").innerHTML =
-    latest.map(a => renderNewsCard(a).replace('article.html', 'pages/article.html')).join("");
+    latest.map(a => renderNewsCard(a, "pages/")).join("");
 </script>
 </body>
 </html>
