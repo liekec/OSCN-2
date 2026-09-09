@@ -4,17 +4,17 @@
 // prefix = "pages/" wanneer je op de index.html zit (hoofdmap)
 function renderNewsCard(article, imgPrefix, linkPrefix) {
   return `
-    <article class="news-card">
+    <a href="${linkPrefix}article.html?slug=${article.slug}" class="news-card" style="display:block;">
       <div class="news-thumb" style="background-image:url('${imgPrefix}${article.image}'); background-size:cover; background-position:center;"></div>
       <div class="news-body">
         <div class="news-date">${article.date}</div>
         <h3>${article.title}</h3>
         <p>${article.excerpt}</p>
-        <a href="${linkPrefix}article.html?slug=${article.slug}">Read more →</a>
+        <span>Read more →</span>
       </div>
-    </article>
+    </a>
   `;
-} 
+}
 
 const newsArticles = [
   {
