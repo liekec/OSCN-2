@@ -22,7 +22,7 @@ const newsArticles = [
     date: "September 9, 2026",
     title: "Celebrate the National Open Science Week with OSCN!",
     excerpt: "The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.",
-    image: "images/news/landscape-poster1.png",
+    image: "images/news/Landscape poster1.png",
     content: `
       <p>The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.</p>
 
@@ -42,7 +42,7 @@ const newsArticles = [
       Coding Café: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzVWbI4uCp83ds8fuC-eqEjRmE1VBqZDdBq9Q28mbjVXg7YQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Register here</a><br>
       Community Café: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqv1ygQ6mtKCzsEr-V3jOzXFKrXrdJDDCeRW96HcIGb8vUZg/viewform?usp=header" target="_blank" rel="noopener noreferrer">Register here</a></p>
 
-      <img src="../images/news/landscape-poster1.png" alt="Open Science Week 2026 poster" style="width:100%; border-radius:12px; margin-top:24px;">
+      <img src="images/news/Landscape poster1.png" alt="Open Science Week 2026 poster" style="width:100%; border-radius:12px; margin-top:24px;">
     `
   },
   {
