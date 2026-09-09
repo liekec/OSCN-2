@@ -22,7 +22,7 @@ const newsArticles = [
     date: "June 10, 2026",
     title: "Meet-up SIG Open Education: Connecting the Opens",
     excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
-    image: "images/news/meetup-open-education.jpg",
+    image: "images/news/open_education.png",
     content: `<p>...</p>`
   },
   {
