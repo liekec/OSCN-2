@@ -22,7 +22,7 @@ const newsArticles = [
     date: "June 10, 2026",
     title: "Meet-up SIG Open Education: Connecting the Opens",
     excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
-    image: "../images/news/meetup-open-education.jpg",
+    image: "images/news/meetup-open-education.jpg",
     content: `<p>...</p>`
   },
   {
@@ -30,7 +30,7 @@ const newsArticles = [
     date: "May 26, 2026",
     title: "OSC-NL Barcamp + National Open Science Festival 2026",
     excerpt: "This October, Delft becomes the meeting place for the Dutch open science community.",
-    image: "../images/news/barcamp-2026.jpg",
+    image: "images/news/barcamp-2026.jpg",
     content: `<p>...</p>`
   },
   {
@@ -38,7 +38,7 @@ const newsArticles = [
     date: "April 16, 2026",
     title: "Turning the Tide: Stories of Open Science",
     excerpt: "Researchers share personal turning points that led them toward open science.",
-    image: "../images/news/turning-the-tide.jpg",
+    image: "images/news/turning-the-tide.jpg",
     content: `
       <p>During the Open Science Retreat in Schoorl, a project was developed titled "Turning the Tide: Stories of Open Science." In this short film, featuring seven people with different roles in academia, researchers share their personal turning points. These are the moments that led them toward open science. They also reflect on what openness in research means in their own work.</p>
       <p>This film aims to empower others to also start their journey, which might be feeling like going against the tide. But maybe you are riding a new wave, together with more and more of your peers?</p>
