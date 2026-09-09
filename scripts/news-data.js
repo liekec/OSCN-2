@@ -14,10 +14,27 @@ function renderNewsCard(article, imgPrefix, linkPrefix) {
       </div>
     </article>
   `;
-}
+} 
 
 const newsArticles = [
+  {slug: "Open-Science-Week-2026",
+    date: "September 9, 2026",
+    title: "Celebrate the National Open Science Week with OSCN!",
+    excerpt: "The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.",
+    image: "images/news/Landscape poster1.png",
+    content: `<p>The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.
+Coding Café – Why metadata matters and how to automate its creation
+11:30–12:30 | [location]
+This hands-on session explores how researchers can automate the creation of metadata for their research software. After a short introduction to why metadata matters and what information is needed, participants will learn how to use a tool for automated metadata creation and try it out through a hands-on code-along using their own project. Free pizza will be provided afterwards. You can register here.
+Community Café – Meet the faces of OSCN
+16:00–18:00 | EOS 01.220 & The Yard
+The afternoon programme brings together researchers, support staff, educators and students from HAN, Radboudumc, Radboud University and MPI. Through short lightning pitches, community members will share their Open Science initiatives, experiences and tips. A great chance to get to know the people behind Open Science in Nijmegen! The pitches will be followed by an informal networking session with free drinks and bites at The Yard.                      You can register here.
+Everyone interested in Open Science is welcome. Registration is required for both events for catering purposes.
+<p>`
+    },
   {
+
+    
     slug: "meetup-open-education",
     date: "June 10, 2026",
     title: "Meet-up SIG Open Education: Connecting the Opens",
