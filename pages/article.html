@@ -1,0 +1,30 @@
+<section class="page-hero reveal">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>OSCN UPDATES</div>
+    <h1 id="article-title">Laden...</h1>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="wrap">
+    <div class="news-date" id="article-date"></div>
+    <div id="article-content"></div>
+    <p><a href="news.html">← Terug naar nieuws</a></p>
+  </div>
+</section>
+
+<script src="../scripts/news-data.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+  const article = newsArticles.find(a => a.slug === slug);
+
+  if (article) {
+    document.title = article.title + " | OSCN";
+    document.getElementById("article-title").textContent = article.title;
+    document.getElementById("article-date").textContent = article.date;
+    document.getElementById("article-content").innerHTML = article.content;
+  } else {
+    document.getElementById("article-title").textContent = "Artikel niet gevonden";
+  }
+</script>
