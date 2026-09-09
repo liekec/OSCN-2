@@ -23,7 +23,30 @@ const newsArticles = [
     title: "Meet-up SIG Open Education: Connecting the Opens",
     excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
     image: "images/news/open_education.png",
-    content: `<p>...</p>`
+    content: `<p>Open Science and Open Education are both growing, but are they also growing towards one another? In this SIG Open Education Meeting (HAN, RU, Radboudumc), we explore where this separation comes from, what is currently happening around openness in higher education, and where opportunities lie to connect both movements.
+
+Open Science and Open Education
+At their core, Open Science and Open Education are closely related movements: both aim to increase the accessibility, transparency and societal impact of knowledge. In practice, however, they have often developed separately, with their own networks, infrastructures, incentives and policy frameworks. This historical separation has led to a certain degree of siloing, meaning that opportunities to connect education and research, both in content and organisation, are still not being fully utilised.
+
+By looking at these movements more in relation to one another, opportunities arise to strengthen both sides. Open educational resources can directly benefit from research results and data, while educational practices can help researchers translate their work into greater societal and educational impact. In addition, the growing attention to recognition and rewards provides an important starting point for making open contributions visible and meaningfully incorporating them into the career paths of both educators and researchers.
+
+During the session
+In this session, we will explore how this separation emerged, what is currently happening in higher education around openness, and where the greatest opportunities for connection can be found. We will pay attention to themes such as shared infrastructures, open knowledge practices, professional development and new forms of recognising and rewarding open work.
+
+The central question is how we can connect Open Science and Open Education into one coherent ecosystem in which education and research strengthen one another structurally, rather than existing alongside each other in parallel.
+
+This session is intended for anyone with an interest in, and some familiarity with, Open Science and Open Education.
+
+Speakers
+This SIG Open Education Meeting is organised by HAN University of Applied Sciences, Radboud University and Radboudumc. The speakers are: Nicolai van der Woert (RU), Marijn Post (HAN), The speaker representing Open Science Nijmegen will be announced at a later date.
+
+Date: 2 July 2026
+
+Time: 16:00–17:00
+
+Location: Kapittelweg 33, Nijmegen, room B1.05
+
+Register here</p>`
   },
   {
     slug: "barcamp-2026",
@@ -31,7 +54,21 @@ const newsArticles = [
     title: "OSC-NL Barcamp + National Open Science Festival 2026",
     excerpt: "This October, Delft becomes the meeting place for the Dutch open science community.",
     image: "images/news/barcamp-2026.jpg",
-    content: `<p>...</p>`
+    content: `<p>This October, Delft will become the meeting place for the Dutch open science community with two inspiring back-to-back events:
+
+📅 Tuesday 13 October 2026
+OSC-NL Barcamp 2026
+A community-driven day of open science, peer exchange, collaboration, and pizza 🍕. The Barcamp has no predetermined programme: participants propose and shape the sessions together on the spot. From newcomers to experienced practitioners, everyone is welcome to join the conversation and contribute ideas.
+🎟 Register here: https://osc-international.com/osc-nl-barcamp-2026/
+
+📅 Wednesday 14 October 2026
+National Open Science Festival 2026
+Hosted this year together with Delft University of Technology, the festival is the place to be for anyone working on or interested in open science. Expect inspiring sessions, practical examples, networking opportunities, and discussions with researchers, support staff, and open science communities from across the Netherlands.
+🎟 Register for free or submit a contribution: https://lnkd.in/ekMWAspu
+
+Whether you join one or both events, these two days offer a fantastic opportunity to connect and help shape the future of open science together.
+
+We hope to see many of you in Delft this October!</p>`
   },
   {
     slug: "turning-the-tide",
