@@ -109,8 +109,8 @@
 <script src="../scripts/news-data.js"></script>
 <script src="../script.js"></script>
 <script>
-  document.getElementById("news-grid").innerHTML =
-    newsArticles.map(a => renderNewsCard(a, "")).join("");
+document.getElementById("news-grid").innerHTML =
+  newsArticles.map(a => renderNewsCard(a, "../", "")).join("");
 </script>
 </body>
 </html>
