@@ -208,8 +208,8 @@
 <script src="script.js"></script>
 <script>
   const latest = newsArticles.slice(0, 3);
-  document.getElementById("index-news-grid").innerHTML =
-    latest.map(a => renderNewsCard(a, "pages/")).join("");
+document.getElementById("index-news-grid").innerHTML =
+  latest.map(a => renderNewsCard(a, "", "pages/")).join("");
 </script>
 </body>
 </html>
