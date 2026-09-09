@@ -122,7 +122,7 @@ if (article) {
 
   if (article.image) {
     const img = document.getElementById("article-image");
-    img.src = article.image;
+    img.src = "../" + article.image;
     img.alt = article.title;
     img.style.display = "block";
   }
