@@ -17,29 +17,34 @@ function renderNewsCard(article, imgPrefix, linkPrefix) {
 } 
 
 const newsArticles = [
-  {slug: "Open-Science-Week-2026",
+  {
+    slug: "Open-Science-Week-2026",
     date: "September 9, 2026",
     title: "Celebrate the National Open Science Week with OSCN!",
     excerpt: "The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.",
-    image: "images/news/Landscape poster1.png",
-    content: `<p>The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.
+    image: "images/news/landscape-poster1.png",
+    content: `
+      <p>The Open Science Community Nijmegen (OSCN) is organising two events on 17 September as part of the national Open Science Week.</p>
 
-Coding Café – Why metadata matters and how to automate its creation
-11:30–12:30 | EOS N 00.330
+      <p><strong>Coding Café – Why metadata matters and how to automate its creation</strong><br>
+      11:30–12:30 | EOS N 00.330</p>
 
-This hands-on session explores how researchers can automate the creation of metadata for their research software. After a short introduction to why metadata matters and what information is needed, participants will learn how to use a tool for automated metadata creation and try it out through a hands-on code-along using their own project. Free pizza will be provided afterwards. You can register here.
+      <p>This hands-on session explores how researchers can automate the creation of metadata for their research software. After a short introduction to why metadata matters and what information is needed, participants will learn how to use a tool for automated metadata creation and try it out through a hands-on code-along using their own project. Free pizza will be provided afterwards. You can <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzVWbI4uCp83ds8fuC-eqEjRmE1VBqZDdBq9Q28mbjVXg7YQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">register here</a>.</p>
 
-Community Café – Meet the faces of OSCN
-16:00–18:00 | EOS 01.220 & The Yard
+      <p><strong>Community Café – Meet the faces of OSCN</strong><br>
+      16:00–18:00 | EOS 01.220 & The Yard</p>
 
-The afternoon programme brings together researchers, support staff, educators and students from HAN, Radboudumc, Radboud University and MPI. Through short lightning pitches, community members will share their Open Science initiatives, experiences and tips. A great chance to get to know the people behind Open Science in Nijmegen! The pitches will be followed by an informal networking session with free drinks and bites at The Yard.                      You can register here.
-Everyone interested in Open Science is welcome. 
+      <p>The afternoon programme brings together researchers, support staff, educators and students from HAN, Radboudumc, Radboud University and MPI. Through short lightning pitches, community members will share their Open Science initiatives, experiences and tips. A great chance to get to know the people behind Open Science in Nijmegen! The pitches will be followed by an informal networking session with free drinks and bites at The Yard. You can <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqv1ygQ6mtKCzsEr-V3jOzXFKrXrdJDDCeRW96HcIGb8vUZg/viewform?usp=header" target="_blank" rel="noopener noreferrer">register here</a>.</p>
 
-Registration is required for both events for catering purposes.
-Coding Café: https://docs.google.com/forms/d/e/1FAIpQLSdzVWbI4uCp83ds8fuC-eqEjRmE1VBqZDdBq9Q28mbjVXg7YQ/viewform?usp=header
-Community Café: https://docs.google.com/forms/d/e/1FAIpQLSdqv1ygQ6mtKCzsEr-V3jOzXFKrXrdJDDCeRW96HcIGb8vUZg/viewform?usp=header
-<p>`
-    },
+      <p>Everyone interested in Open Science is welcome.</p>
+
+      <p>Registration is required for both events for catering purposes.<br>
+      Coding Café: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzVWbI4uCp83ds8fuC-eqEjRmE1VBqZDdBq9Q28mbjVXg7YQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Register here</a><br>
+      Community Café: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqv1ygQ6mtKCzsEr-V3jOzXFKrXrdJDDCeRW96HcIGb8vUZg/viewform?usp=header" target="_blank" rel="noopener noreferrer">Register here</a></p>
+
+      <img src="../images/news/landscape-poster1.png" alt="Open Science Week 2026 poster" style="width:100%; border-radius:12px; margin-top:24px;">
+    `
+  },
   {
 
     
