@@ -4,7 +4,7 @@
 // prefix = "pages/" wanneer je op de index.html zit (hoofdmap)
 function renderNewsCard(article, imgPrefix, linkPrefix) {
   return `
-    <article class="news-card reveal">
+    <article class="news-card">
       <div class="news-thumb" style="background-image:url('${imgPrefix}${article.image}'); background-size:cover; background-position:center;"></div>
       <div class="news-body">
         <div class="news-date">${article.date}</div>
