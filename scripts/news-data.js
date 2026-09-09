@@ -2,15 +2,15 @@
 
 // prefix = "" wanneer je al in de pages/ map zit (bv. news.html)
 // prefix = "pages/" wanneer je op de index.html zit (hoofdmap)
-function renderNewsCard(article, prefix) {
+function renderNewsCard(article, imgPrefix, linkPrefix) {
   return `
     <article class="news-card reveal">
-      <div class="news-thumb" style="background-image:url('${prefix}${article.image}'); background-size:cover; background-position:center;"></div>
+      <div class="news-thumb" style="background-image:url('${imgPrefix}${article.image}'); background-size:cover; background-position:center;"></div>
       <div class="news-body">
         <div class="news-date">${article.date}</div>
         <h3>${article.title}</h3>
         <p>${article.excerpt}</p>
-        <a href="${prefix}article.html?slug=${article.slug}">Read more →</a>
+        <a href="${linkPrefix}article.html?slug=${article.slug}">Read more →</a>
       </div>
     </article>
   `;
