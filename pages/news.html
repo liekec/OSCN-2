@@ -41,7 +41,6 @@
   </div>
 </header>
 
-
 <section class="page-hero reveal">
   <div class="wrap">
     <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>OSCN UPDATES</div>
@@ -108,9 +107,10 @@
 </footer>
 
 <script src="../scripts/news-data.js"></script>
+<script src="../script.js"></script>
 <script>
   document.getElementById("news-grid").innerHTML =
-    newsArticles.map(a => renderNewsCard(a).replace('pages/article.html', 'article.html')).join("");
+    newsArticles.map(a => renderNewsCard(a, "")).join("");
 </script>
 </body>
 </html>
