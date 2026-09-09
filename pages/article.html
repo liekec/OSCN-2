@@ -114,14 +114,19 @@
   const slug = params.get("slug");
   const article = newsArticles.find(a => a.slug === slug);
 
-  if (article) {
-    document.getElementById("page-title").textContent = article.title + " | OSCN";
-    document.getElementById("article-title").textContent = article.title;
-    document.getElementById("article-date").textContent = article.date;
-    document.getElementById("article-content").innerHTML = article.content;
-  } else {
-    document.getElementById("article-title").textContent = "Artikel niet gevonden";
+if (article) {
+  document.getElementById("page-title").textContent = article.title + " | OSCN";
+  document.getElementById("article-title").textContent = article.title;
+  document.getElementById("article-date").textContent = article.date;
+  document.getElementById("article-content").innerHTML = article.content;
+
+  if (article.image) {
+    const img = document.getElementById("article-image");
+    img.src = article.image;
+    img.alt = article.title;
+    img.style.display = "block";
   }
+}
 </script>
 </body>
 </html>
