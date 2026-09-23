@@ -83,14 +83,14 @@ function renderNewsCard(article, rootPrefix, pagePrefix) {
     : `<div class="news-thumb"></div>`;
 
   return `
-    <article class="news-card reveal is-visible">
+    <a class="news-card reveal is-visible" href="${pagePrefix}article.html?slug=${article.slug}">
       ${thumb}
       <div class="news-body">
         <div class="news-date">${article.date}</div>
         <h3>${article.title}</h3>
         <p>${article.excerpt}</p>
-        <a href="${pagePrefix}article.html?slug=${article.slug}">Continue reading →</a>
+        <span class="continue-reading">Continue reading →</span>
       </div>
-    </article>
+    </a>
   `;
 }
