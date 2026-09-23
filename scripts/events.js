@@ -36,7 +36,7 @@ link: "#"
 ];
 
 function formatDate(dateString) {
-const date = new Date(dateString);
+var date = new Date(dateString);
 
 return date.toLocaleDateString("en-GB", {
 day: "numeric",
@@ -46,9 +46,9 @@ year: "numeric"
 }
 
 function formatTime(dateString, endTime) {
-const date = new Date(dateString);
+var date = new Date(dateString);
 
-const start = date.toLocaleTimeString("en-GB", {
+var start = date.toLocaleTimeString("en-GB", {
 hour: "2-digit",
 minute: "2-digit"
 });
@@ -57,6 +57,12 @@ return start + "–" + endTime;
 }
 
 function createEventCard(event) {
+var date = new Date(event.date);
+var day = date.getDate();
+var month = date.toLocaleDateString("en-GB", {
+month: "short"
+});
+
 return (
 '<article class="event" data-event-id="' +
  event.id +
@@ -65,60 +71,53 @@ return (
  '">' +
 '<div class="event-date">' +
 '<span class="event-day">' +
-new Date(event.date).getDate() +
-"</span>" +
+day +
+'</span>' +
 '<span class="event-month">' +
-new Date(event.date).toLocaleDateString("en-GB", {
-month: "short"
-}) +
-"</span>" +
-"</div>" +
-
-```
-  '<div class="event-content">' +
-    '<span class="event-tag ' +
-    event.tag +
-    '">' +
-    event.tagLabel +
-    "</span>" +
-
-    "<h3>" +
-    event.title +
-    "</h3>" +
-
-    '<p class="event-meta">' +
-    formatDate(event.date) +
-    " · " +
-    formatTime(event.date, event.endTime) +
-    " · " +
-    event.location +
-    "</p>" +
-
-    "<p>" +
-    event.shortDescription +
-    "</p>" +
-  "</div>" +
-"</article>"
-```
-
+month +
+'</span>' +
+'</div>' +
+'<div class="event-content">' +
+'<span class="event-tag ' +
+     event.tag +
+     '">' +
+event.tagLabel +
+'</span>' +
+'<h3>' +
+event.title +
+'</h3>' +
+'<p class="event-meta">' +
+formatDate(event.date) +
+' · ' +
+formatTime(event.date, event.endTime) +
+' · ' +
+event.location +
+'</p>' +
+'<p>' +
+event.shortDescription +
+'</p>' +
+'</div>' +
+'</article>'
 );
 }
 
 function renderEvents() {
-const upcomingContainer = document.getElementById("upcomingEventsList");
-const pastContainer = document.getElementById("pastEventsList");
+var upcomingContainer =
+document.getElementById("upcomingEventsList");
+
+var pastContainer =
+document.getElementById("pastEventsList");
 
 if (!upcomingContainer || !pastContainer) {
 return;
 }
 
-const now = new Date();
+var now = new Date();
+var upcoming = [];
+var past = [];
 
-const upcoming = [];
-const past = [];
-
-events.forEach(function (event) {
-const date = new Date(event.date);
+events.forEach(function(event) {
+var date = new Date(event.date);
 
 ```
 if (date >= now) {
@@ -130,27 +129,25 @@ if (date >= now) {
 
 });
 
-upcoming.sort(function (a, b) {
+upcoming.sort(function(a, b) {
 return new Date(a.date) - new Date(b.date);
 });
 
-past.sort(function (a, b) {
+past.sort(function(a, b) {
 return new Date(b.date) - new Date(a.date);
 });
 
 if (upcoming.length > 0) {
-upcomingContainer.innerHTML = upcoming
-.map(createEventCard)
-.join("");
+upcomingContainer.innerHTML =
+upcoming.map(createEventCard).join("");
 } else {
 upcomingContainer.innerHTML =
 '<p class="events-empty">There are currently no events planned.</p>';
 }
 
 if (past.length > 0) {
-pastContainer.innerHTML = past
-.map(createEventCard)
-.join("");
+pastContainer.innerHTML =
+past.map(createEventCard).join("");
 } else {
 pastContainer.innerHTML =
 '<p class="events-empty">There are no previous events.</p>';
@@ -160,21 +157,24 @@ setupEventCards();
 }
 
 function setupEventCards() {
-const cards = document.querySelectorAll(".event[data-event-id]");
+var cards =
+document.querySelectorAll(".event[data-event-id]");
 
-cards.forEach(function (card) {
-card.addEventListener("click", function () {
-const eventId = card.getAttribute("data-event-id");
-openEvent(eventId);
+cards.forEach(function(card) {
+card.addEventListener("click", function() {
+openEvent(
+card.getAttribute("data-event-id")
+);
 });
 
 ```
-card.addEventListener("keydown", function (e) {
+card.addEventListener("keydown", function(e) {
   if (e.key === "Enter" || e.key === " ") {
     e.preventDefault();
 
-    const eventId = card.getAttribute("data-event-id");
-    openEvent(eventId);
+    openEvent(
+      card.getAttribute("data-event-id")
+    );
   }
 });
 ```
@@ -183,7 +183,7 @@ card.addEventListener("keydown", function (e) {
 }
 
 function openEvent(eventId) {
-const event = events.find(function (item) {
+var event = events.find(function(item) {
 return item.id === eventId;
 });
 
@@ -191,21 +191,33 @@ if (!event) {
 return;
 }
 
-const overview = document.getElementById("eventsOverview");
-const detail = document.getElementById("eventDetail");
+var overview =
+document.getElementById("eventsOverview");
 
-const detailImage = document.getElementById("eventDetailImage");
-const detailTag = document.getElementById("eventDetailTag");
-const detailTitle = document.getElementById("eventDetailTitle");
-const detailMeta = document.getElementById("eventDetailMeta");
-const detailDescription =
-document.getElementById("eventDetailDescription");
-const detailRegister =
-document.getElementById("eventDetailRegister");
+var detail =
+document.getElementById("eventDetail");
 
 if (!overview || !detail) {
 return;
 }
+
+var detailImage =
+document.getElementById("eventDetailImage");
+
+var detailTag =
+document.getElementById("eventDetailTag");
+
+var detailTitle =
+document.getElementById("eventDetailTitle");
+
+var detailMeta =
+document.getElementById("eventDetailMeta");
+
+var detailDescription =
+document.getElementById("eventDetailDescription");
+
+var detailRegister =
+document.getElementById("eventDetailRegister");
 
 if (detailImage) {
 if (event.image) {
@@ -219,7 +231,8 @@ detailImage.hidden = true;
 
 if (detailTag) {
 detailTag.textContent = event.tagLabel;
-detailTag.className = "event-tag " + event.tag;
+detailTag.className =
+"event-tag " + event.tag;
 }
 
 if (detailTitle) {
@@ -236,7 +249,8 @@ event.location;
 }
 
 if (detailDescription) {
-detailDescription.textContent = event.description;
+detailDescription.textContent =
+event.description;
 }
 
 if (detailRegister) {
@@ -264,8 +278,11 @@ behavior: "smooth"
 }
 
 function closeEvent() {
-const overview = document.getElementById("eventsOverview");
-const detail = document.getElementById("eventDetail");
+var overview =
+document.getElementById("eventsOverview");
+
+var detail =
+document.getElementById("eventDetail");
 
 if (!overview || !detail) {
 return;
@@ -274,65 +291,96 @@ return;
 detail.hidden = true;
 overview.hidden = false;
 
-window.history.pushState({}, "", window.location.pathname);
+window.history.pushState(
+{},
+"",
+window.location.pathname
+);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+"DOMContentLoaded",
+function() {
 renderEvents();
 
-const togglePast = document.getElementById("togglePast");
-const pastEventsList = document.getElementById("pastEventsList");
+```
+var togglePast =
+  document.getElementById("togglePast");
+
+var pastEventsList =
+  document.getElementById("pastEventsList");
 
 if (togglePast && pastEventsList) {
-togglePast.addEventListener("click", function () {
-const isHidden = pastEventsList.hidden;
+  togglePast.addEventListener(
+    "click",
+    function() {
+      pastEventsList.hidden =
+        !pastEventsList.hidden;
 
-```
-  pastEventsList.hidden = !isHidden;
-
-  togglePast.textContent = isHidden
-    ? "Hide past events"
-    : "Show past events";
-});
-```
-
+      togglePast.textContent =
+        pastEventsList.hidden
+          ? "Show past events"
+          : "Hide past events";
+    }
+  );
 }
 
-const backButton = document.getElementById("backToEvents");
+var backButton =
+  document.getElementById("backToEvents");
 
 if (backButton) {
-backButton.addEventListener("click", function () {
-closeEvent();
-});
+  backButton.addEventListener(
+    "click",
+    function() {
+      closeEvent();
+    }
+  );
 }
 
-const params = new URLSearchParams(window.location.search);
-const eventId = params.get("id");
+var params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+var eventId =
+  params.get("id");
 
 if (eventId) {
-openEvent(eventId);
+  openEvent(eventId);
 }
-});
+```
 
-window.addEventListener("popstate", function () {
-const params = new URLSearchParams(window.location.search);
-const eventId = params.get("id");
+}
+);
+
+window.addEventListener(
+"popstate",
+function() {
+var params =
+new URLSearchParams(
+window.location.search
+);
+
+```
+var eventId =
+  params.get("id");
 
 if (eventId) {
-openEvent(eventId);
+  openEvent(eventId);
 } else {
-const detail = document.getElementById("eventDetail");
-const overview = document.getElementById("eventsOverview");
+  var detail =
+    document.getElementById("eventDetail");
 
-```
-if (detail && overview) {
-  detail.hidden = true;
-  overview.hidden = false;
+  var overview =
+    document.getElementById("eventsOverview");
+
+  if (detail && overview) {
+    detail.hidden = true;
+    overview.hidden = false;
+  }
 }
 ```
 
 }
-});
-
-
+);
 
