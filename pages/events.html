@@ -1,582 +1,252 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Events | OSCN</title>
+  <title>Events — Open Science Community Nijmegen</title>
 
   <link rel="stylesheet" href="../style.css">
-
-  <style>
-    /* ==================================================
-       EVENT DETAIL
-       Only applies to the event detail view
-    ================================================== */
-
-    .event-detail-page {
-      padding-top: 40px;
-      padding-bottom: 80px;
-    }
-
-    .event-detail-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .event-detail-back {
-      margin-bottom: 32px;
-    }
-
-    .event-detail-back button {
-      background: none;
-      border: 0;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      color: inherit;
-    }
-
-    .event-detail-card {
-      display: grid;
-      grid-template-columns: minmax(280px, 420px) 1fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    .event-detail-poster {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-    }
-
-    .event-detail-info {
-      padding-top: 5px;
-    }
-
-    .event-detail-info h1 {
-      margin-top: 16px;
-      margin-bottom: 18px;
-    }
-
-    .event-detail-meta {
-      margin-bottom: 28px;
-      opacity: 0.75;
-    }
-
-    .event-detail-description {
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-
-    .event-detail-actions {
-      margin-top: 25px;
-    }
-
-    @media (max-width: 750px) {
-      .event-detail-card {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .event-detail-poster {
-        max-width: 500px;
-      }
-    }
-  </style>
-
 </head>
 
 <body>
 
-<!-- ==================================================
-     HEADER
-================================================== -->
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
 
-<header class="site">
-
-  <div class="wrap bar">
+  <header class="site-header">
+    <div class="wrap nav-wrap">
 
 ```
-<a class="logo" href="../index.html">
-  <img
-    src="../images/OSCN_logo_transparant.png"
-    alt="OSCN Logo"
-  >
-</a>
+  <a class="logo" href="../index.html">
+    <span class="logo-mark">OS</span>
+    <span class="logo-text">Open Science<br>Community Nijmegen</span>
+  </a>
 
-<button
-  class="nav-toggle"
-  id="navToggle"
->
-  MENU
-</button>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html" class="active">Events</a>
+    <a href="news.html">News</a>
+    <a href="team.html">Team</a>
+  </nav>
 
-<nav
-  class="primary"
-  id="primaryNav"
->
-  <ul>
-
-    <li>
-      <a
-        href="../index.html"
-        class="home-link"
-        aria-label="Home"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          width="22"
-          height="22"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M3 10.5L12 3l9 7.5"></path>
-          <path d="M5 10v10h5v-6h4v6h5V10"></path>
-        </svg>
-      </a>
-    </li>
-
-    <li class="dropdown">
-      <a href="../pages/about.html">
-        About
-      </a>
-
-      <div class="dropdown-content">
-        <a href="../pages/contact.html">Contact</a>
-        <a href="../pages/resources.html">Resources</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="../pages/events.html">
-        Events
-      </a>
-    </li>
-
-    <li class="dropdown">
-      <a href="../pages/news.html">
-        News
-      </a>
-
-      <div class="dropdown-content">
-        <a href="../pages/news.html">News</a>
-        <a href="../pages/newsletters.html">Newsletters</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="../pages/members.html">
-        Members
-      </a>
-    </li>
-
-    <li>
-      <a
-        href="../pages/join.html"
-        class="join-btn"
-      >
-        Join
-      </a>
-    </li>
-
-  </ul>
-</nav>
+</div>
 ```
 
-  </div>
+  </header>
 
-</header>
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
 
-<!-- ==================================================
-     PAGE HERO
-================================================== -->
+  <main>
 
-<section
-  class="page-hero reveal"
-  id="eventsHero"
->
-
+```
+<section class="page-hero">
   <div class="wrap">
 
-```
-<div class="eyebrow">
-  <span class="dot3">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
+    <p class="eyebrow">Open Science Community Nijmegen</p>
 
-  COMMUNITY
-</div>
+    <h1>Events</h1>
 
-<h1>Events</h1>
-
-<p class="lede">
-  Everyone interested in Open Science is welcome to join.
-  Below are our upcoming meet-ups and workshops.
-</p>
-```
+    <p>
+      Join us for workshops, meet-ups and other events around
+      Open Science in Nijmegen.
+    </p>
 
   </div>
-
 </section>
 
-<!-- ==================================================
+
+<!-- ============================================================
      EVENTS OVERVIEW
-================================================== -->
+     ============================================================ -->
 
 <div id="eventsOverview">
 
   <!-- UPCOMING EVENTS -->
 
-  <section class="block reveal events-section">
+  <section class="block reveal">
+    <div class="wrap">
 
-```
-<div class="wrap">
+      <div class="section-header">
+        <p class="eyebrow">What's coming up</p>
+        <h2>Upcoming Events</h2>
+      </div>
 
-  <div
-    class="events-list"
-    id="upcomingEventsList"
-  ></div>
+      <div
+        class="events-list"
+        id="upcomingEventsList">
+      </div>
 
-</div>
-```
-
+    </div>
   </section>
+
 
   <!-- PREVIOUS EVENTS -->
 
-  <section class="block reveal past-events-section events-section">
+  <section class="block reveal">
+    <div class="wrap">
 
-```
-<div class="wrap">
+      <div class="section-header-row">
 
-  <div class="section-header-row">
+        <div>
+          <p class="eyebrow">Already happened</p>
+          <h2>Previous Events</h2>
+        </div>
 
-    <h2>
-      Previous Events
-    </h2>
+        <button
+          type="button"
+          class="toggle-past"
+          id="togglePast"
+          aria-expanded="false"
+          aria-controls="pastEventsList">
+          Show past events
+        </button>
 
-    <button
-      class="toggle-past"
-      id="togglePast"
-      aria-expanded="false"
-    >
-      Show past events
-    </button>
+      </div>
 
-  </div>
+      <div
+        class="events-list past-events"
+        id="pastEventsList"
+        hidden>
+      </div>
 
-  <div
-    class="events-list past-events"
-    id="pastEventsList"
-    hidden
-  ></div>
-
-</div>
-```
-
+    </div>
   </section>
 
 </div>
 
-<!-- ==================================================
-     EVENT DETAIL
 
-     Same page — no separate HTML file.
-================================================== -->
+<!-- ============================================================
+     EVENT DETAIL
+     Same page — no separate event.html
+     ============================================================ -->
 
 <section
-  class="block reveal event-detail-page"
+  class="block event-detail-page"
   id="eventDetail"
-  style="display: none;"
->
+  style="display: none;">
 
-  <div class="wrap event-detail-inner">
+  <div class="wrap">
 
-```
-<div class="event-detail-back">
+    <div class="event-detail-back">
+      <button
+        type="button"
+        id="backToEvents">
+        ← Back to events
+      </button>
+    </div>
 
-  <button
-    type="button"
-    onclick="closeEventDetail()"
-  >
-    ← Back to events
-  </button>
+    <div class="event-detail-card">
 
-</div>
+      <div>
+        <img
+          id="eventDetailImage"
+          class="event-detail-poster"
+          src=""
+          alt="">
+      </div>
 
+      <div class="event-detail-info">
 
-<div class="event-detail-card">
+        <span
+          id="eventDetailTag"
+          class="event-tag">
+        </span>
 
-  <div>
-    <img
-      id="eventDetailImage"
-      class="event-detail-poster"
-      src=""
-      alt=""
-    >
-  </div>
+        <h1 id="eventDetailTitle"></h1>
 
+        <div
+          id="eventDetailMeta"
+          class="event-detail-meta">
+        </div>
 
-  <div class="event-detail-info">
+        <p
+          id="eventDetailDescription"
+          class="event-detail-description">
+        </p>
 
-    <span
-      id="eventDetailTag"
-      class="event-tag"
-    ></span>
+        <div class="event-detail-actions">
 
-    <h1 id="eventDetailTitle"></h1>
+          <a
+            id="eventDetailRegister"
+            class="btn btn-primary small"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display: none;">
+            Register →
+          </a>
 
-    <div
-      id="eventDetailMeta"
-      class="event-detail-meta"
-    ></div>
+        </div>
 
-    <p
-      id="eventDetailDescription"
-      class="event-detail-description"
-    ></p>
-
-    <div class="event-detail-actions">
-
-      <a
-        id="eventDetailRegister"
-        class="btn btn-primary small"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="display: none;"
-      >
-        Register →
-      </a>
+      </div>
 
     </div>
 
   </div>
 
-</div>
-```
-
-  </div>
-
 </section>
+```
 
-<!-- ==================================================
-     FOOTER
-================================================== -->
+  </main>
 
-<footer class="site">
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
 
-  <div class="wrap footer-grid">
+  <footer class="site-footer">
 
 ```
-<!-- FOOTER ABOUT -->
+<div class="wrap footer-grid">
 
-<div>
+  <div>
+    <div class="logo footer-logo">
+      <span class="logo-mark">OS</span>
+      <span class="logo-text">
+        Open Science<br>
+        Community Nijmegen
+      </span>
+    </div>
 
-  <a
-    class="logo"
-    href="../index.html"
-  >
-    <img
-      src="../images/OSCN_logo_transparant.png"
-      alt="OSCN Logo"
-    >
-  </a>
+    <p>
+      Building an open, collaborative and inclusive research
+      culture in Nijmegen.
+    </p>
+  </div>
 
+  <div>
+    <h3>Explore</h3>
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="news.html">News</a>
+    <a href="team.html">Team</a>
+  </div>
+
+</div>
+
+<div class="wrap footer-bottom">
   <p>
-    Open Science Community Nijmegen promotes open,
-    transparent and reproducible research through
-    community building and collaboration.
+    © Open Science Community Nijmegen
   </p>
-
-</div>
-
-
-<!-- FOOTER NAVIGATION -->
-
-<div class="flinks">
-
-  <h3>Navigate</h3>
-
-  <a href="../pages/about.html">About</a>
-  <a href="../pages/resources.html">Resources</a>
-  <a href="../pages/events.html">Events</a>
-  <a href="../pages/news.html">News</a>
-  <a href="../pages/newsletters.html">Newsletters</a>
-  <a href="../pages/members.html">Members</a>
-  <a href="../pages/contact.html">Contact</a>
-  <a href="../pages/join.html">Join</a>
-
-</div>
-
-
-<!-- FOOTER CONTACT -->
-
-<div class="flinks">
-
-  <h3>Contact</h3>
-
-  <a href="mailto:openscience.nijmegen@gmail.com">
-    openscience.nijmegen@gmail.com
-  </a>
-
-  <a
-    class="social-link"
-    href="https://www.linkedin.com/company/open-science-community-nijmegen/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-
-    <svg viewBox="0 0 24 24">
-      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1C12.9 8.8 14.7 7.7 17 7.7c5 0 5.9 3.3 5.9 7.6V24h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-5V8z"/>
-    </svg>
-
-    LinkedIn
-
-  </a>
-
-</div>
-
-
-<!-- NEWSLETTER -->
-
-<div>
-
-  <h3>
-    Receive our newsletter
-  </h3>
-
-  <form
-    method="post"
-    action="https://open-science-community-nijmegen.email-provider.eu/subscribe/post/index.php"
-    accept-charset="utf-8"
-    class="footer-form form-op7pq9fkox"
-  >
-
-    <input
-      type="hidden"
-      name="next"
-      value=""
-    >
-
-    <input
-      type="hidden"
-      name="a"
-      value="ohz7mrmpse"
-    >
-
-    <input
-      type="hidden"
-      name="l"
-      value="op7pq9fkox"
-    >
-
-    <label for="id-Kz6LqtiXnQ">
-      Email *
-    </label>
-
-    <input
-      name="Kz6LqtiXnQ"
-      id="id-Kz6LqtiXnQ"
-      type="email"
-      placeholder="you@example.com"
-      required
-    >
-
-    <label for="id-P3Px8y6G0Y">
-      First name *
-    </label>
-
-    <input
-      name="P3Px8y6G0Y"
-      id="id-P3Px8y6G0Y"
-      type="text"
-      placeholder="First name"
-      required
-    >
-
-    <label for="id-OTxNlZSNlG">
-      Last name *
-    </label>
-
-    <input
-      name="OTxNlZSNlG"
-      id="id-OTxNlZSNlG"
-      type="text"
-      placeholder="Last name"
-      required
-    >
-
-    <!-- Honeypot -->
-
-    <input
-      type="email"
-      id="email"
-      name="email"
-      style="position:absolute;left:-9999px;"
-      tabindex="-1"
-      autocomplete="off"
-    >
-
-    <input
-      type="submit"
-      value="Subscribe"
-    >
-
-  </form>
-
-  <script src="https://open-science-community-nijmegen.email-provider.eu/subscribe/check/validate.js"></script>
-
 </div>
 ```
 
-  </div>
+  </footer>
 
-  <!-- FOOTER BOTTOM -->
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
 
-  <div class="wrap footer-bottom">
+  <script src="../script.js"></script>
 
-```
-<span>
-  © 2026 Open Science Community Nijmegen
-</span>
-
-<span>
-
-  <a href="#">
-    Privacy
-  </a>
-
-  ·
-
-  <a href="#">
-    Cookies
-  </a>
-
-</span>
-```
-
-  </div>
-
-</footer>
-
-<!-- ==================================================
-     SCRIPTS
-================================================== -->
-
-<script src="../script.js"></script>
-
-<script src="../scripts/events.js"></script>
+  <script src="../scripts/events.js"></script>
 
 </body>
 </html>
 
-
-</html>
