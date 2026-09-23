@@ -9,12 +9,14 @@
 // unique "slug" (used in the URL, e.g. article.html?slug=your-slug),
 // and fill in date / title / excerpt / content. "image" is optional
 // — path relative to the site root, e.g. "images/news/my-photo.jpg".
+// Leave "image" out (or empty) to fall back to the plain gradient thumb.
 const newsArticles = [
   {
     slug: "sig-open-education",
     date: "June 10, 2026",
     title: "Meet-up SIG Open Education: Connecting the Opens",
     excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
+    image: "images/news/open_education.png",
     content: `
       <p>Open Science and Open Education are both growing, but are they also growing towards one another? In this SIG Open Education Meeting (HAN, RU, Radboudumc), we explore where this separation comes from, what is currently happening around openness in higher education, and where opportunities lie to connect both movements.</p>
 
@@ -42,6 +44,7 @@ const newsArticles = [
     date: "May 26, 2026",
     title: "OSC-NL Barcamp + National Open Science Festival 2026",
     excerpt: "This October, Delft will become the meeting place for the Dutch open science community — two inspiring back-to-back events.",
+    image: "images/news/barcamp-2026.jpg",
     content: `
       <p>This October, Delft will become the meeting place for the Dutch open science community with two inspiring back-to-back events:</p>
 
@@ -62,6 +65,7 @@ const newsArticles = [
     date: "April 16, 2026",
     title: "Turning the Tide: Stories of Open Science",
     excerpt: "In this short film, seven people with different roles in academia share the personal turning points that led them toward open science.",
+    image: "images/news/turning-the-tide.jpg",
     content: `
       <p>During the Open Science Retreat in Schoorl, a project was developed titled "Turning the Tide: Stories of Open Science." In this short film, featuring seven people with different roles in academia, researchers share their personal turning points. These are the moments that led them toward open science. They also reflect on what openness in research means in their own work.</p>
       <p>This film aims to empower others to also start their journey, which might be feeling like going against the tide. But maybe you are riding a new wave, together with more and more of your peers?</p>
@@ -71,11 +75,16 @@ const newsArticles = [
   }
 ];
 
+// rootPrefix: path back to the site root ("" on index.html, "../" on pages/news.html) — used for the image
 // pagePrefix: path to the pages/ folder for internal links ("pages/" on index.html, "" on pages/news.html)
 function renderNewsCard(article, rootPrefix, pagePrefix) {
+  const thumb = article.image
+    ? `<div class="news-thumb" style="background-image:url('${rootPrefix}${article.image}'); background-size:cover; background-position:center;"></div>`
+    : `<div class="news-thumb"></div>`;
+
   return `
     <article class="news-card reveal is-visible">
-      <div class="news-thumb"></div>
+      ${thumb}
       <div class="news-body">
         <div class="news-date">${article.date}</div>
         <h3>${article.title}</h3>
