@@ -1,8 +1,5 @@
 // ======================================================
 // EVENT DATA
-// Voeg hier nieuwe events toe.
-// Voor ieder event hoef je alleen hieronder een nieuw
-// object toe te voegen.
 // ======================================================
 
 const events = [
@@ -16,11 +13,9 @@ const events = [
     location: "EOS N 00.330",
     image: "images/events/Poster_coding_cafe.png",
 
-    // Korte tekst voor events.html
     shortDescription:
       "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
 
-    // Volledige tekst voor event.html
     description:
       "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
 
@@ -46,29 +41,39 @@ const events = [
     link: "#"
   }
 
-  // Voeg hier meer events toe.
+  // Voeg hier later nieuwe events toe
 ];
 
 
 // ======================================================
-// EVENTS OVERVIEW
+// EVENT OVERVIEW
 // ======================================================
 
 function renderEvents() {
+
   const now = new Date();
 
   const upcoming = [];
   const past = [];
 
   events.forEach(ev => {
+
     const evDate = new Date(ev.date);
 
     if (evDate >= now) {
-      upcoming.push({ ...ev, _date: evDate });
+      upcoming.push({
+        ...ev,
+        _date: evDate
+      });
     } else {
-      past.push({ ...ev, _date: evDate });
+      past.push({
+        ...ev,
+        _date: evDate
+      });
     }
+
   });
+
 
   // Eerstvolgende event eerst
   upcoming.sort((a, b) => a._date - b._date);
@@ -76,31 +81,44 @@ function renderEvents() {
   // Meest recente oude event eerst
   past.sort((a, b) => b._date - a._date);
 
-  const upcomingList = document.getElementById("upcomingEventsList");
-  const pastList = document.getElementById("pastEventsList");
+
+  const upcomingList =
+    document.getElementById("upcomingEventsList");
+
+  const pastList =
+    document.getElementById("pastEventsList");
+
 
   if (upcomingList) {
+
     upcomingList.innerHTML = upcoming.length
       ? upcoming.map(ev => eventCard(ev, false)).join("")
       : '<p class="no-events">There are currently no events planned.</p>';
+
   }
 
+
   if (pastList) {
+
     pastList.innerHTML = past.length
       ? past.map(ev => eventCard(ev, true)).join("")
       : '<p class="no-events">There are currently no past events listed.</p>';
+
   }
+
 }
 
 
 // ======================================================
 // EVENT CARD
-// Dit is het korte blokje op events.html
 // ======================================================
 
 function eventCard(ev, isPast) {
+
   const month = ev._date
-    .toLocaleString("en-US", { month: "short" })
+    .toLocaleString("en-US", {
+      month: "short"
+    })
     .toUpperCase();
 
   const day = ev._date.getDate();
@@ -114,10 +132,13 @@ function eventCard(ev, isPast) {
     ? ` · ${ev.location}`
     : "";
 
+
   return `
-    <a
+    <article
       class="event${isPast ? " past" : ""}"
-      href="event.html?id=${encodeURIComponent(ev.id)}"
+      onclick="openEvent('${ev.id}')"
+      role="button"
+      tabindex="0"
     >
 
       <div class="event-date">
@@ -143,87 +164,34 @@ function eventCard(ev, isPast) {
 
       </div>
 
-    </a>
+    </article>
   `;
 }
 
 
-// Render de events op events.html
-renderEvents();
-
-
 // ======================================================
-// PREVIOUS EVENTS TOGGLE
+// OPEN EVENT DETAIL
 // ======================================================
 
-const toggleBtn = document.getElementById("togglePast");
-const pastList = document.getElementById("pastEventsList");
+function openEvent(id) {
 
-if (toggleBtn && pastList) {
-  toggleBtn.addEventListener("click", () => {
+  const ev = events.find(event => event.id === id);
 
-    const expanded =
-      toggleBtn.getAttribute("aria-expanded") === "true";
-
-    toggleBtn.setAttribute(
-      "aria-expanded",
-      String(!expanded)
-    );
-
-    pastList.hidden = expanded;
-
-    toggleBtn.textContent = expanded
-      ? "Show past events"
-      : "Hide past events";
-  });
-}
+  if (!ev) return;
 
 
-// ======================================================
-// EVENT DETAIL PAGE
-// Dit gedeelte wordt alleen uitgevoerd op event.html
-//
-// Bijvoorbeeld:
-// event.html?id=coding-cafe-metadata-2026-09
-// ======================================================
+  const overview =
+    document.getElementById("eventsOverview");
 
-function renderEventDetail() {
-
-  const eventTitle = document.getElementById("eventTitle");
-
-  // We zitten niet op event.html
-  if (!eventTitle) {
-    return;
-  }
-
-  // Lees ?id=... uit de URL
-  const params = new URLSearchParams(window.location.search);
-  const eventId = params.get("id");
-
-  // Zoek het juiste event
-  const ev = events.find(event => event.id === eventId);
-
-  // Event bestaat niet
-  if (!ev) {
-
-    document.getElementById("eventPageContent").innerHTML = `
-      <div class="wrap">
-        <h1>Event not found</h1>
-        <p>
-          Sorry, this event could not be found.
-        </p>
-        <p>
-          <a href="events.html">← Back to events</a>
-        </p>
-      </div>
-    `;
-
-    return;
-  }
+  const detail =
+    document.getElementById("eventDetail");
 
 
-  // Datum en tijd
+  if (!overview || !detail) return;
+
+
   const d = new Date(ev.date);
+
 
   const dateLabel = d.toLocaleDateString("en-US", {
     weekday: "long",
@@ -232,40 +200,44 @@ function renderEventDetail() {
     year: "numeric"
   });
 
+
   const startTime = d.toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit"
   });
 
 
-  // Pagina titel
-  document.title = `${ev.title} | OSCN`;
-
-
   // Titel
-  document.getElementById("eventTitle").textContent =
+  document.getElementById("eventDetailTitle").textContent =
     ev.title;
 
 
   // Tag
-  const tag = document.getElementById("eventTag");
+  const tag =
+    document.getElementById("eventDetailTag");
 
   tag.textContent = ev.tagLabel;
   tag.className = `event-tag ${ev.tag}`;
 
 
-  // Meta informatie
-  document.getElementById("eventMeta").textContent =
+  // Datum / tijd / locatie
+  document.getElementById("eventDetailMeta").textContent =
     `${dateLabel} · ${startTime}–${ev.endTime}` +
     (ev.location ? ` · ${ev.location}` : "");
 
 
-  // Afbeelding
-  const image = document.getElementById("eventImage");
+  // Beschrijving
+  document.getElementById("eventDetailDescription").textContent =
+    ev.description;
+
+
+  // Poster
+  const image =
+    document.getElementById("eventDetailImage");
 
   if (ev.image) {
 
-    image.src = "../" + ev.image;
+    image.src = ev.image;
     image.alt = ev.title;
     image.style.display = "block";
 
@@ -276,13 +248,9 @@ function renderEventDetail() {
   }
 
 
-  // Volledige beschrijving
-  document.getElementById("eventDescription").textContent =
-    ev.description;
-
-
   // Registratieknop
-  const register = document.getElementById("eventRegister");
+  const register =
+    document.getElementById("eventDetailRegister");
 
   const isPast = d < new Date();
 
@@ -296,8 +264,127 @@ function renderEventDetail() {
     register.style.display = "none";
 
   }
+
+
+  // Overzicht verbergen
+  overview.style.display = "none";
+
+
+  // Detail tonen
+  detail.style.display = "block";
+
+
+  // URL aanpassen zonder nieuwe pagina
+  const newUrl =
+    `${window.location.pathname}?id=${encodeURIComponent(ev.id)}`;
+
+  window.history.pushState(
+    { eventId: ev.id },
+    "",
+    newUrl
+  );
+
+
+  // Naar boven
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 
-// Detailpagina uitvoeren indien nodig
-renderEventDetail();
+// ======================================================
+// CLOSE EVENT DETAIL
+// ======================================================
+
+function closeEventDetail() {
+
+  const overview =
+    document.getElementById("eventsOverview");
+
+  const detail =
+    document.getElementById("eventDetail");
+
+
+  if (!overview || !detail) return;
+
+
+  detail.style.display = "none";
+  overview.style.display = "block";
+
+
+  // URL terug naar gewone events pagina
+  window.history.pushState(
+    {},
+    "",
+    window.location.pathname
+  );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+// ======================================================
+// PREVIOUS EVENTS TOGGLE
+// ======================================================
+
+const toggleBtn =
+  document.getElementById("togglePast");
+
+const pastList =
+  document.getElementById("pastEventsList");
+
+
+if (toggleBtn && pastList) {
+
+  toggleBtn.addEventListener("click", () => {
+
+    const expanded =
+      toggleBtn.getAttribute("aria-expanded") === "true";
+
+
+    toggleBtn.setAttribute(
+      "aria-expanded",
+      String(!expanded)
+    );
+
+
+    pastList.hidden = expanded;
+
+
+    toggleBtn.textContent = expanded
+      ? "Show past events"
+      : "Hide past events";
+
+  });
+
+}
+
+
+// ======================================================
+// INITIALISE
+// ======================================================
+
+renderEvents();
+
+
+// ======================================================
+// OPEN EVENT FROM URL
+// Bijvoorbeeld:
+// events.html?id=coding-cafe-metadata-2026-09
+// ======================================================
+
+const urlParams =
+  new URLSearchParams(window.location.search);
+
+const eventId =
+  urlParams.get("id");
+
+
+if (eventId) {
+  openEvent(eventId);
+}
