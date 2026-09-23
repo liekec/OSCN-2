@@ -18,7 +18,6 @@ description:
 "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
 link: "#"
 },
-
 {
 id: "community-cafe-2026-09",
 date: "2026-09-17T16:00:00",
@@ -36,110 +35,90 @@ link: "#"
 }
 ];
 
-/* ============================================================
-GET EVENT DATE
-============================================================ */
+function formatDate(dateString) {
+const date = new Date(dateString);
 
-function getEventDate(event) {
-return new Date(event.date);
-}
-
-/* ============================================================
-FORMAT TIME
-============================================================ */
-
-function formatTime(date) {
-return date.toLocaleTimeString("en-GB", {
-hour: "2-digit",
-minute: "2-digit"
+return date.toLocaleDateString("en-GB", {
+day: "numeric",
+month: "long",
+year: "numeric"
 });
 }
 
-/* ============================================================
-CREATE EVENT CARD
-============================================================ */
+function formatTime(dateString, endTime) {
+const date = new Date(dateString);
 
-function createEventCard(event, isPast) {
-const date = getEventDate(event);
+const start = date.toLocaleTimeString("en-GB", {
+hour: "2-digit",
+minute: "2-digit"
+});
 
-const month = date
-.toLocaleString("en-US", {
-month: "short"
-})
-.toUpperCase();
-
-const day = date.getDate();
-const time = formatTime(date);
-
-let location = "";
-
-if (event.location) {
-location = " · " + event.location;
+return start + "–" + endTime;
 }
 
+function createEventCard(event) {
 return (
-'<article class="event' +
-(isPast ? " past" : "") +
-'" data-event-id="' +
-event.id +
-'" tabindex="0" role="button" aria-label="Open event: ' +
-event.title +
-'">' +
+'<article class="event" data-event-id="' +
+ event.id +
+ '" tabindex="0" role="button" aria-label="Open event: ' +
+ event.title +
+ '">' +
+'<div class="event-date">' +
+'<span class="event-day">' +
+new Date(event.date).getDate() +
+"</span>" +
+'<span class="event-month">' +
+new Date(event.date).toLocaleDateString("en-GB", {
+month: "short"
+}) +
+"</span>" +
+"</div>" +
 
 ```
-  '<div class="event-date">' +
-    '<span class="month">' +
-      month +
-    '</span>' +
-
-    '<span class="day">' +
-      day +
-    '</span>' +
-  '</div>' +
-
   '<div class="event-content">' +
-
     '<span class="event-tag ' +
-      event.tag +
+    event.tag +
     '">' +
-      event.tagLabel +
-    '</span>' +
+    event.tagLabel +
+    "</span>" +
 
-    '<h3>' +
-      event.title +
-    '</h3>' +
+    "<h3>" +
+    event.title +
+    "</h3>" +
 
-    '<p>' +
-      event.shortDescription +
-    '</p>' +
+    '<p class="event-meta">' +
+    formatDate(event.date) +
+    " · " +
+    formatTime(event.date, event.endTime) +
+    " · " +
+    event.location +
+    "</p>" +
 
-    '<div class="event-meta">' +
-      time +
-      "–" +
-      event.endTime +
-      location +
-    '</div>' +
-
-  '</div>' +
-
-'</article>'
+    "<p>" +
+    event.shortDescription +
+    "</p>" +
+  "</div>" +
+"</article>"
 ```
 
 );
 }
 
-/* ============================================================
-RENDER EVENTS
-============================================================ */
-
 function renderEvents() {
+const upcomingContainer = document.getElementById("upcomingEventsList");
+const pastContainer = document.getElementById("pastEventsList");
+
+if (!upcomingContainer || !pastContainer) {
+return;
+}
+
 const now = new Date();
 
 const upcoming = [];
 const past = [];
 
-events.forEach(function(event) {
-const date = getEventDate(event);
+events.forEach(function (event) {
+const date = new Date(event.date);
 
 ```
 if (date >= now) {
@@ -151,284 +130,132 @@ if (date >= now) {
 
 });
 
-/* Upcoming: earliest first */
-
-upcoming.sort(function(a, b) {
-return getEventDate(a) - getEventDate(b);
+upcoming.sort(function (a, b) {
+return new Date(a.date) - new Date(b.date);
 });
 
-/* Past: most recent first */
-
-past.sort(function(a, b) {
-return getEventDate(b) - getEventDate(a);
+past.sort(function (a, b) {
+return new Date(b.date) - new Date(a.date);
 });
 
-const upcomingList =
-document.getElementById("upcomingEventsList");
-
-const pastList =
-document.getElementById("pastEventsList");
-
-/* ==========================================================
-UPCOMING EVENTS
-========================================================== */
-
-if (upcomingList) {
-
-```
 if (upcoming.length > 0) {
-
-  upcomingList.innerHTML =
-    upcoming
-      .map(function(event) {
-        return createEventCard(event, false);
-      })
-      .join("");
-
+upcomingContainer.innerHTML = upcoming
+.map(createEventCard)
+.join("");
 } else {
-
-  upcomingList.innerHTML =
-    '<p class="no-events">There are currently no events planned.</p>';
-}
-```
-
+upcomingContainer.innerHTML =
+'<p class="events-empty">There are currently no events planned.</p>';
 }
 
-/* ==========================================================
-PAST EVENTS
-========================================================== */
-
-if (pastList) {
-
-```
 if (past.length > 0) {
-
-  pastList.innerHTML =
-    past
-      .map(function(event) {
-        return createEventCard(event, true);
-      })
-      .join("");
-
+pastContainer.innerHTML = past
+.map(createEventCard)
+.join("");
 } else {
-
-  pastList.innerHTML =
-    '<p class="no-events">There are currently no past events listed.</p>';
+pastContainer.innerHTML =
+'<p class="events-empty">There are no previous events.</p>';
 }
+
+setupEventCards();
+}
+
+function setupEventCards() {
+const cards = document.querySelectorAll(".event[data-event-id]");
+
+cards.forEach(function (card) {
+card.addEventListener("click", function () {
+const eventId = card.getAttribute("data-event-id");
+openEvent(eventId);
+});
+
+```
+card.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+
+    const eventId = card.getAttribute("data-event-id");
+    openEvent(eventId);
+  }
+});
 ```
 
-}
-}
-
-/* ============================================================
-OPEN EVENT DETAIL
-============================================================ */
-
-function openEvent(id, updateUrl) {
-
-if (typeof updateUrl === "undefined") {
-updateUrl = true;
+});
 }
 
-const event =
-events.find(function(item) {
-return item.id === id;
+function openEvent(eventId) {
+const event = events.find(function (item) {
+return item.id === eventId;
 });
 
 if (!event) {
 return;
 }
 
-const overview =
-document.getElementById("eventsOverview");
+const overview = document.getElementById("eventsOverview");
+const detail = document.getElementById("eventDetail");
 
-const detail =
-document.getElementById("eventDetail");
+const detailImage = document.getElementById("eventDetailImage");
+const detailTag = document.getElementById("eventDetailTag");
+const detailTitle = document.getElementById("eventDetailTitle");
+const detailMeta = document.getElementById("eventDetailMeta");
+const detailDescription =
+document.getElementById("eventDetailDescription");
+const detailRegister =
+document.getElementById("eventDetailRegister");
 
 if (!overview || !detail) {
 return;
 }
 
-const date =
-getEventDate(event);
-
-/* Date */
-
-const dateLabel =
-date.toLocaleDateString("en-US", {
-weekday: "long",
-month: "long",
-day: "numeric",
-year: "numeric"
-});
-
-/* Time */
-
-const startTime =
-formatTime(date);
-
-/* Title */
-
-const titleElement =
-document.getElementById("eventDetailTitle");
-
-if (titleElement) {
-titleElement.textContent =
-event.title;
-}
-
-/* Tag */
-
-const tag =
-document.getElementById("eventDetailTag");
-
-if (tag) {
-tag.textContent =
-event.tagLabel;
-
-```
-tag.className =
-  "event-tag " + event.tag;
-```
-
-}
-
-/* Meta */
-
-const meta =
-document.getElementById("eventDetailMeta");
-
-if (meta) {
-
-```
-let metaText =
-  dateLabel +
-  " · " +
-  startTime +
-  "–" +
-  event.endTime;
-
-if (event.location) {
-  metaText +=
-    " · " +
-    event.location;
-}
-
-meta.textContent =
-  metaText;
-```
-
-}
-
-/* Description */
-
-const description =
-document.getElementById(
-"eventDetailDescription"
-);
-
-if (description) {
-description.textContent =
-event.description;
-}
-
-/* Image */
-
-const image =
-document.getElementById(
-"eventDetailImage"
-);
-
-if (image) {
-
-```
+if (detailImage) {
 if (event.image) {
-
-  image.src =
-    event.image;
-
-  image.alt =
-    event.title;
-
-  image.style.display =
-    "block";
-
+detailImage.src = event.image;
+detailImage.alt = event.title;
+detailImage.hidden = false;
 } else {
-
-  image.removeAttribute("src");
-
-  image.alt =
-    "";
-
-  image.style.display =
-    "none";
+detailImage.hidden = true;
 }
-```
-
 }
 
-/* Register button */
+if (detailTag) {
+detailTag.textContent = event.tagLabel;
+detailTag.className = "event-tag " + event.tag;
+}
 
-const register =
-document.getElementById(
-"eventDetailRegister"
-);
+if (detailTitle) {
+detailTitle.textContent = event.title;
+}
 
-if (register) {
+if (detailMeta) {
+detailMeta.textContent =
+formatDate(event.date) +
+" · " +
+formatTime(event.date, event.endTime) +
+" · " +
+event.location;
+}
 
-```
-const isPast =
-  date < new Date();
+if (detailDescription) {
+detailDescription.textContent = event.description;
+}
 
-if (
-  !isPast &&
-  event.link &&
-  event.link !== "#"
-) {
-
-  register.href =
-    event.link;
-
-  register.style.display =
-    "inline-block";
-
+if (detailRegister) {
+if (event.link && event.link !== "#") {
+detailRegister.href = event.link;
+detailRegister.hidden = false;
 } else {
-
-  register.style.display =
-    "none";
+detailRegister.hidden = true;
 }
-```
-
 }
 
-/* Switch overview to detail */
+overview.hidden = true;
+detail.hidden = false;
 
-overview.style.display =
-"none";
-
-detail.style.display =
-"block";
-
-/* Update URL */
-
-if (updateUrl) {
-
-```
-const url =
-  window.location.pathname +
-  "?id=" +
-  encodeURIComponent(event.id);
-
-history.pushState(
-  { eventId: event.id },
-  "",
-  url
+window.history.pushState(
+{ eventId: event.id },
+"",
+"?id=" + encodeURIComponent(event.id)
 );
-```
-
-}
-
-/* Scroll to top */
 
 window.scrollTo({
 top: 0,
@@ -436,277 +263,76 @@ behavior: "smooth"
 });
 }
 
-/* ============================================================
-CLOSE EVENT DETAIL
-============================================================ */
-
-function closeEventDetail(updateUrl) {
-
-if (typeof updateUrl === "undefined") {
-updateUrl = true;
-}
-
-const overview =
-document.getElementById(
-"eventsOverview"
-);
-
-const detail =
-document.getElementById(
-"eventDetail"
-);
+function closeEvent() {
+const overview = document.getElementById("eventsOverview");
+const detail = document.getElementById("eventDetail");
 
 if (!overview || !detail) {
 return;
 }
 
-detail.style.display =
-"none";
+detail.hidden = true;
+overview.hidden = false;
 
-overview.style.display =
-"block";
-
-if (updateUrl) {
-
-```
-history.pushState(
-  {},
-  "",
-  window.location.pathname
-);
-```
-
+window.history.pushState({}, "", window.location.pathname);
 }
 
-window.scrollTo({
-top: 0,
-behavior: "smooth"
-});
-}
-
-/* ============================================================
-BACK TO EVENTS BUTTON
-============================================================ */
-
-document.addEventListener(
-"DOMContentLoaded",
-function() {
-
-```
-const backButton =
-  document.getElementById(
-    "backToEvents"
-  );
-
-if (backButton) {
-
-  backButton.addEventListener(
-    "click",
-    function() {
-      closeEventDetail();
-    }
-  );
-}
-```
-
-}
-);
-
-/* ============================================================
-EVENT CARD CLICK
-============================================================ */
-
-document.addEventListener(
-"click",
-function(event) {
-
-```
-const card =
-  event.target.closest(
-    ".event[data-event-id]"
-  );
-
-if (!card) {
-  return;
-}
-
-openEvent(
-  card.dataset.eventId
-);
-```
-
-}
-);
-
-/* ============================================================
-EVENT CARD KEYBOARD
-============================================================ */
-
-document.addEventListener(
-"keydown",
-function(event) {
-
-```
-if (
-  event.key !== "Enter" &&
-  event.key !== " "
-) {
-  return;
-}
-
-const card =
-  event.target.closest(
-    ".event[data-event-id]"
-  );
-
-if (!card) {
-  return;
-}
-
-event.preventDefault();
-
-openEvent(
-  card.dataset.eventId
-);
-```
-
-}
-);
-
-/* ============================================================
-PAST EVENTS TOGGLE
-============================================================ */
-
-document.addEventListener(
-"DOMContentLoaded",
-function() {
-
-```
-const togglePast =
-  document.getElementById(
-    "togglePast"
-  );
-
-const pastEvents =
-  document.getElementById(
-    "pastEventsList"
-  );
-
-if (
-  !togglePast ||
-  !pastEvents
-) {
-  return;
-}
-
-
-togglePast.addEventListener(
-  "click",
-  function() {
-
-    const isOpen =
-      !pastEvents.hasAttribute(
-        "hidden"
-      );
-
-
-    if (isOpen) {
-
-      pastEvents.setAttribute(
-        "hidden",
-        ""
-      );
-
-      togglePast.textContent =
-        "Show past events";
-
-      togglePast.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    } else {
-
-      pastEvents.removeAttribute(
-        "hidden"
-      );
-
-      togglePast.textContent =
-        "Hide past events";
-
-      togglePast.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-    }
-
-  }
-);
-```
-
-}
-);
-
-/* ============================================================
-BROWSER BACK / FORWARD
-============================================================ */
-
-window.addEventListener(
-"popstate",
-function() {
-
-```
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
-const id =
-  params.get("id");
-
-
-if (id) {
-
-  openEvent(
-    id,
-    false
-  );
-
-} else {
-
-  closeEventDetail(
-    false
-  );
-}
-```
-
-}
-);
-
-/* ============================================================
-INITIALISE
-============================================================ */
-
+document.addEventListener("DOMContentLoaded", function () {
 renderEvents();
 
-/* ============================================================
-OPEN EVENT FROM URL
-============================================================ */
+const togglePast = document.getElementById("togglePast");
+const pastEventsList = document.getElementById("pastEventsList");
 
-const initialParams =
-new URLSearchParams(
-window.location.search
-);
+if (togglePast && pastEventsList) {
+togglePast.addEventListener("click", function () {
+const isHidden = pastEventsList.hidden;
 
-const initialEventId =
-initialParams.get("id");
+```
+  pastEventsList.hidden = !isHidden;
 
-if (initialEventId) {
+  togglePast.textContent = isHidden
+    ? "Hide past events"
+    : "Show past events";
+});
+```
 
-openEvent(
-initialEventId,
-false
-);
 }
+
+const backButton = document.getElementById("backToEvents");
+
+if (backButton) {
+backButton.addEventListener("click", function () {
+closeEvent();
+});
+}
+
+const params = new URLSearchParams(window.location.search);
+const eventId = params.get("id");
+
+if (eventId) {
+openEvent(eventId);
+}
+});
+
+window.addEventListener("popstate", function () {
+const params = new URLSearchParams(window.location.search);
+const eventId = params.get("id");
+
+if (eventId) {
+openEvent(eventId);
+} else {
+const detail = document.getElementById("eventDetail");
+const overview = document.getElementById("eventsOverview");
+
+```
+if (detail && overview) {
+  detail.hidden = true;
+  overview.hidden = false;
+}
+```
+
+}
+});
+
 
 
