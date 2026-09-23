@@ -11,33 +11,41 @@
 // — path relative to the site root, e.g. "images/news/my-photo.jpg".
 // Leave "image" out (or empty) to fall back to the plain gradient thumb.
 const newsArticles = [
-  {
-    slug: "open-science-week",
-    date: "September 10, 2026",
-    title: "Celebrate Open Science Week with OSCN!",
-    excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
-    image: "images/news/Landscape poster1.png",
-    content: `
-      <p>On behalf of the OSCN organising team, we are happy to invite you all to join us in celebrating the National Open Science Week! 
-To celebrate together as a community, we’ve organised two special events on Thursday September 17. We’re excited to finally share them with you – you can find more information below.
- Both events are open to members and non-members, so feel free to bring along a colleague or friend who might be interested as well. We’d especially love to see as many of you as possible at our Community Café in the afternoon – a great chance to meet, celebrate, and connect with others who are passionate about Open Science in Nijmegen. 
-We look forward to celebrating Open Science Week with you! </p>
+{
+  slug: "open-science-week",
+  date: "September 10, 2026",
+  title: "Celebrate Open Science Week with OSCN!",
+  excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
+  image: "images/news/Landscape poster1.png",
+  content: `
+{
+  slug: "open-science-week",
+  date: "September 10, 2026",
+  title: "Celebrate Open Science Week with OSCN!",
+  excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
+  image: "images/news/Landscape poster1.png",
+  content: `
+    <p>On behalf of the OSCN organising team, we are happy to invite you to join us in celebrating National Open Science Week!</p>
+    <p>To celebrate together as a community, we’ve organised two special events on Thursday, September 17. We’re excited to finally share them with you – you can find more information below.</p>
+    <p>Both events are open to members and non-members, so feel free to bring along a colleague or friend who might be interested as well. We’d especially love to see as many of you as possible at our Community Café in the afternoon – a great opportunity to meet, celebrate, and connect with others who are passionate about Open Science in Nijmegen.</p>
+    <p>We look forward to celebrating Open Science Week with you!</p>
 
-      <h3>CODING CAFÉ - METADATA</h3>
-      <p>11:30–12:30 | EOS N 00.330
-Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. But creating metadata can also feel like yet another administrative task on your to-do list.
-During this hands-on Coding Café, we’ll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we’ll get hands-on with a code-along so you can try it out with your own research software project. So bring your own laptop!
- No need to be a metadata expert, just bring your project and your curiosity!
- And of course, there will be free pizza afterwards 🍕
- This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.</p>
+    <h3>CODING CAFÉ – METADATA</h3>
+    <p><strong>11:30–12:30 | EOS N 00.330</strong></p>
+    <p>Metadata helps others find, understand, and reuse your research software, and can even help your work get more citations. But creating metadata can also feel like yet another administrative task on your to-do list.</p>
+    <p>During this hands-on Coding Café, we’ll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we’ll get hands-on with a code-along so you can try it out with your own research software project.</p>
+    <p>So bring your own laptop! No need to be a metadata expert – just bring your project and your curiosity.</p>
+    <p>And of course, there will be free pizza afterwards 🍕</p>
+    <p>This event is sponsored by and organised in collaboration with the eScience Center. Registration is required for catering purposes.</p>
 
-      <h3>COMMUNITY CAFÉ</h3>
-      <p>16:00–18:00 | EOS 01.220 & The Yard
- Who are the people behind Open Science in Nijmegen, and what are they working on?
-During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations. They’ll share their Open Science initiatives, experiences and tips - giving you a chance to discover what others are doing and meet the people behind Open Science in our community.
- After the pitches (approximately around 16:45h), we’ll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!</p>
-    `
-  },
+    <h3>COMMUNITY CAFÉ</h3>
+    <p><strong>16:00–18:00 | EOS 01.220 & The Yard</strong></p>
+    <p>Who are the people behind Open Science in Nijmegen, and what are they working on?</p>
+    <p>During our Community Café, community members from HAN, Radboudumc, Radboud University, and MPI will take the stage for short presentations. They’ll share their Open Science initiatives, experiences, and tips – giving you a chance to discover what others are doing and meet the people behind Open Science in our community.</p>
+    <p>After the pitches (approximately around 16:45), we’ll move to The Yard for free drinks, bites, and plenty of time to connect with colleagues.</p>
+    <p>Everyone is welcome!</p>
+  `
+},
    
   {
     slug: "sig-open-education",
