@@ -1,390 +1,688 @@
-// ======================================================
-// EVENT DATA
-// ======================================================
+/* ======================================================
+EVENT DATA
+====================================================== */
 
 const events = [
-  {
-    id: "coding-cafe-metadata-2026-09",
-    date: "2026-09-17T11:30:00",
-    endTime: "12:30",
-    tag: "workshop",
-    tagLabel: "Workshop",
-    title: "Coding Café - Metadata",
-    location: "EOS N 00.330",
-    image: "images/events/Poster_coding_cafe.png",
 
-    shortDescription:
-      "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
+{
+id: "coding-cafe-metadata-2026-09",
+date: "2026-09-17T11:30:00",
+endTime: "12:30",
 
-    description:
-      "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
+```
+tag: "workshop",
+tagLabel: "Workshop",
 
-    link: "#"
-  },
+title: "Coding Café - Metadata",
 
-  {
-    id: "community-cafe-2026-09",
-    date: "2026-09-17T16:00:00",
-    endTime: "18:00",
-    tag: "meetup",
-    tagLabel: "Meet-up",
-    title: "Community Café",
-    location: "EOS 01.220 & The Yard",
-    image: "images/events/Poster_community_cafe.png",
+location: "EOS N 00.330",
 
-    shortDescription:
-      "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
+image: "images/events/Poster_coding_cafe.png",
 
-    description:
-      "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
+shortDescription:
+  "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
 
-    link: "#"
-  }
+description:
+  "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
 
-  // Voeg hier later nieuwe events toe
+link: "#"
+```
+
+},
+
+{
+id: "community-cafe-2026-09",
+date: "2026-09-17T16:00:00",
+endTime: "18:00",
+
+```
+tag: "meetup",
+tagLabel: "Meet-up",
+
+title: "Community Café",
+
+location: "EOS 01.220 & The Yard",
+
+image: "images/events/Poster_community_cafe.png",
+
+shortDescription:
+  "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
+
+description:
+  "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
+
+link: "#"
+```
+
+}
+
+// Add new events here.
 ];
 
-
-// ======================================================
-// EVENT OVERVIEW
-// ======================================================
+/* ======================================================
+RENDER EVENTS
+====================================================== */
 
 function renderEvents() {
 
-  const now = new Date();
+const now = new Date();
 
-  const upcoming = [];
-  const past = [];
+const upcoming = [];
+const past = [];
 
-  events.forEach(ev => {
+events.forEach(event => {
 
-    const evDate = new Date(ev.date);
+```
+const eventDate = new Date(event.date);
 
-    if (evDate >= now) {
-      upcoming.push({
-        ...ev,
-        _date: evDate
-      });
-    } else {
-      past.push({
-        ...ev,
-        _date: evDate
-      });
-    }
+if (eventDate >= now) {
 
+  upcoming.push({
+    ...event,
+    _date: eventDate
   });
 
+} else {
 
-  // Eerstvolgende event eerst
-  upcoming.sort((a, b) => a._date - b._date);
+  past.push({
+    ...event,
+    _date: eventDate
+  });
 
-  // Meest recente oude event eerst
-  past.sort((a, b) => b._date - a._date);
+}
+```
 
+});
 
-  const upcomingList =
-    document.getElementById("upcomingEventsList");
+// Upcoming: soonest first
+upcoming.sort((a, b) => a._date - b._date);
 
-  const pastList =
-    document.getElementById("pastEventsList");
+// Previous: newest first
+past.sort((a, b) => b._date - a._date);
 
+const upcomingList =
+document.getElementById("upcomingEventsList");
 
-  if (upcomingList) {
+const pastList =
+document.getElementById("pastEventsList");
 
-    upcomingList.innerHTML = upcoming.length
-      ? upcoming.map(ev => eventCard(ev, false)).join("")
-      : '<p class="no-events">There are currently no events planned.</p>';
+if (upcomingList) {
 
-  }
+```
+upcomingList.innerHTML = upcoming.length
 
+  ? upcoming
+      .map(event => eventCard(event, false))
+      .join("")
 
-  if (pastList) {
-
-    pastList.innerHTML = past.length
-      ? past.map(ev => eventCard(ev, true)).join("")
-      : '<p class="no-events">There are currently no past events listed.</p>';
-
-  }
+  : '<p class="no-events">There are currently no events planned.</p>';
+```
 
 }
 
+if (pastList) {
 
-// ======================================================
-// EVENT CARD
-// ======================================================
+```
+pastList.innerHTML = past.length
 
-function eventCard(ev, isPast) {
+  ? past
+      .map(event => eventCard(event, true))
+      .join("")
 
-  const month = ev._date
-    .toLocaleString("en-US", {
-      month: "short"
-    })
-    .toUpperCase();
+  : '<p class="no-events">There are currently no past events listed.</p>';
+```
 
-  const day = ev._date.getDate();
-
-  const startTime = ev._date.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-
-  const locationHtml = ev.location
-    ? ` · ${ev.location}`
-    : "";
-
-
-  return `
-    <article
-      class="event${isPast ? " past" : ""}"
-      onclick="openEvent('${ev.id}')"
-      role="button"
-      tabindex="0"
-    >
-
-      <div class="event-date">
-        <span class="month">${month}</span>
-        <span class="day">${day}</span>
-      </div>
-
-      <div class="event-content">
-
-        <span class="event-tag ${ev.tag}">
-          ${ev.tagLabel}
-        </span>
-
-        <h3>${ev.title}</h3>
-
-        <p>
-          ${ev.shortDescription || ev.description}
-        </p>
-
-        <div class="event-meta">
-          ${startTime}–${ev.endTime}${locationHtml}
-        </div>
-
-      </div>
-
-    </article>
-  `;
 }
 
+}
 
-// ======================================================
-// OPEN EVENT DETAIL
-// ======================================================
+/* ======================================================
+EVENT CARD
+====================================================== */
+
+function eventCard(event, isPast) {
+
+const month =
+event._date
+.toLocaleString("en-US", {
+month: "short"
+})
+.toUpperCase();
+
+const day =
+event._date.getDate();
+
+const startTime =
+event._date.toLocaleTimeString("en-GB", {
+hour: "2-digit",
+minute: "2-digit"
+});
+
+const location =
+event.location
+? ` · ${event.location}`
+: "";
+
+return `
+
+```
+<article
+  class="event${isPast ? " past" : ""}"
+  onclick="openEvent('${event.id}')"
+  role="button"
+  tabindex="0"
+>
+
+  <div class="event-date">
+
+    <span class="month">
+      ${month}
+    </span>
+
+    <span class="day">
+      ${day}
+    </span>
+
+  </div>
+
+
+  <div class="event-content">
+
+    <span class="event-tag ${event.tag}">
+      ${event.tagLabel}
+    </span>
+
+    <h3>
+      ${event.title}
+    </h3>
+
+    <p>
+      ${event.shortDescription}
+    </p>
+
+    <div class="event-meta">
+      ${startTime}–${event.endTime}${location}
+    </div>
+
+  </div>
+
+</article>
+```
+
+`;
+}
+
+/* ======================================================
+OPEN EVENT
+====================================================== */
 
 function openEvent(id) {
 
-  const ev = events.find(event => event.id === id);
+const event =
+events.find(item => item.id === id);
 
-  if (!ev) return;
+if (!event) return;
 
+const overview =
+document.getElementById("eventsOverview");
 
-  const overview =
-    document.getElementById("eventsOverview");
+const detail =
+document.getElementById("eventDetail");
 
-  const detail =
-    document.getElementById("eventDetail");
+if (!overview || !detail) return;
 
+const date =
+new Date(event.date);
 
-  if (!overview || !detail) return;
+const dateLabel =
+date.toLocaleDateString("en-US", {
+weekday: "long",
+month: "long",
+day: "numeric",
+year: "numeric"
+});
 
+const startTime =
+date.toLocaleTimeString("en-GB", {
+hour: "2-digit",
+minute: "2-digit"
+});
 
-  const d = new Date(ev.date);
+/* TITLE */
 
+document.getElementById(
+"eventDetailTitle"
+).textContent = event.title;
 
-  const dateLabel = d.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  });
+/* TAG */
 
+const tag =
+document.getElementById("eventDetailTag");
 
-  const startTime = d.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+tag.textContent =
+event.tagLabel;
 
+tag.className =
+`event-tag ${event.tag}`;
 
-  // Titel
-  document.getElementById("eventDetailTitle").textContent =
-    ev.title;
+/* META */
 
+document.getElementById(
+"eventDetailMeta"
+).textContent =
 
-  // Tag
-  const tag =
-    document.getElementById("eventDetailTag");
+```
+`${dateLabel} · ${startTime}–${event.endTime}` +
 
-  tag.textContent = ev.tagLabel;
-  tag.className = `event-tag ${ev.tag}`;
+(
+  event.location
+    ? ` · ${event.location}`
+    : ""
+);
+```
 
+/* DESCRIPTION */
 
-  // Datum / tijd / locatie
-  document.getElementById("eventDetailMeta").textContent =
-    `${dateLabel} · ${startTime}–${ev.endTime}` +
-    (ev.location ? ` · ${ev.location}` : "");
+document.getElementById(
+"eventDetailDescription"
+).textContent =
+event.description;
 
+/* POSTER */
 
-  // Beschrijving
-  document.getElementById("eventDetailDescription").textContent =
-    ev.description;
+const image =
+document.getElementById("eventDetailImage");
 
+if (event.image) {
 
-  // Poster
-  const image =
-    document.getElementById("eventDetailImage");
+```
+/*
+  events.html staat in /pages/
+  De afbeelding staat vanaf de root in /images/
+*/
 
-  if (ev.image) {
+image.src =
+  "../" + event.image;
 
-    image.src = ev.image;
-    image.alt = ev.title;
-    image.style.display = "block";
+image.alt =
+  event.title;
 
-  } else {
+image.style.display =
+  "block";
+```
 
-    image.style.display = "none";
+} else {
 
-  }
+```
+image.style.display =
+  "none";
+```
 
-
-  // Registratieknop
-  const register =
-    document.getElementById("eventDetailRegister");
-
-  const isPast = d < new Date();
-
-  if (!isPast && ev.link && ev.link !== "#") {
-
-    register.href = ev.link;
-    register.style.display = "inline-block";
-
-  } else {
-
-    register.style.display = "none";
-
-  }
-
-
-  // Overzicht verbergen
-  overview.style.display = "none";
-
-
-  // Detail tonen
-  detail.style.display = "block";
-
-
-  // URL aanpassen zonder nieuwe pagina
-  const newUrl =
-    `${window.location.pathname}?id=${encodeURIComponent(ev.id)}`;
-
-  window.history.pushState(
-    { eventId: ev.id },
-    "",
-    newUrl
-  );
-
-
-  // Naar boven
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
 }
 
+/* REGISTER BUTTON */
 
-// ======================================================
-// CLOSE EVENT DETAIL
-// ======================================================
+const register =
+document.getElementById(
+"eventDetailRegister"
+);
+
+const isPast =
+date < new Date();
+
+if (
+!isPast &&
+event.link &&
+event.link !== "#"
+) {
+
+```
+register.href =
+  event.link;
+
+register.style.display =
+  "inline-block";
+```
+
+} else {
+
+```
+register.style.display =
+  "none";
+```
+
+}
+
+/* SHOW DETAIL */
+
+overview.style.display =
+"none";
+
+detail.style.display =
+"block";
+
+/* UPDATE URL WITHOUT LOADING A NEW PAGE */
+
+const newUrl =
+`${window.location.pathname}?id=${encodeURIComponent(event.id)}`;
+
+window.history.pushState(
+{
+eventId: event.id
+},
+"",
+newUrl
+);
+
+/* GO TO TOP */
+
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+
+}
+
+/* ======================================================
+CLOSE EVENT
+====================================================== */
 
 function closeEventDetail() {
 
-  const overview =
-    document.getElementById("eventsOverview");
+const overview =
+document.getElementById("eventsOverview");
 
-  const detail =
-    document.getElementById("eventDetail");
+const detail =
+document.getElementById("eventDetail");
 
+if (!overview || !detail) return;
 
-  if (!overview || !detail) return;
+detail.style.display =
+"none";
 
+overview.style.display =
+"block";
 
-  detail.style.display = "none";
-  overview.style.display = "block";
+/* Remove ?id=... */
 
+window.history.pushState(
+{},
+"",
+window.location.pathname
+);
 
-  // URL terug naar gewone events pagina
-  window.history.pushState(
-    {},
-    "",
-    window.location.pathname
-  );
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
 
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
 }
 
+/* ======================================================
+BROWSER BACK / FORWARD
+====================================================== */
 
-// ======================================================
-// PREVIOUS EVENTS TOGGLE
-// ======================================================
+window.addEventListener(
+"popstate",
+() => {
+
+```
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const id =
+  params.get("id");
+
+
+if (id) {
+
+  openEventWithoutHistory(id);
+
+} else {
+
+  showEventOverview();
+
+}
+```
+
+}
+);
+
+/* ======================================================
+OPEN EVENT WITHOUT ADDING ANOTHER HISTORY ENTRY
+====================================================== */
+
+function openEventWithoutHistory(id) {
+
+const event =
+events.find(item => item.id === id);
+
+if (!event) return;
+
+const overview =
+document.getElementById("eventsOverview");
+
+const detail =
+document.getElementById("eventDetail");
+
+if (!overview || !detail) return;
+
+const date =
+new Date(event.date);
+
+const dateLabel =
+date.toLocaleDateString("en-US", {
+weekday: "long",
+month: "long",
+day: "numeric",
+year: "numeric"
+});
+
+const startTime =
+date.toLocaleTimeString("en-GB", {
+hour: "2-digit",
+minute: "2-digit"
+});
+
+document.getElementById(
+"eventDetailTitle"
+).textContent = event.title;
+
+const tag =
+document.getElementById(
+"eventDetailTag"
+);
+
+tag.textContent =
+event.tagLabel;
+
+tag.className =
+`event-tag ${event.tag}`;
+
+document.getElementById(
+"eventDetailMeta"
+).textContent =
+
+```
+`${dateLabel} · ${startTime}–${event.endTime}` +
+
+(
+  event.location
+    ? ` · ${event.location}`
+    : ""
+);
+```
+
+document.getElementById(
+"eventDetailDescription"
+).textContent =
+event.description;
+
+const image =
+document.getElementById(
+"eventDetailImage"
+);
+
+if (event.image) {
+
+```
+image.src =
+  "../" + event.image;
+
+image.alt =
+  event.title;
+
+image.style.display =
+  "block";
+```
+
+} else {
+
+```
+image.style.display =
+  "none";
+```
+
+}
+
+const register =
+document.getElementById(
+"eventDetailRegister"
+);
+
+const isPast =
+date < new Date();
+
+if (
+!isPast &&
+event.link &&
+event.link !== "#"
+) {
+
+```
+register.href =
+  event.link;
+
+register.style.display =
+  "inline-block";
+```
+
+} else {
+
+```
+register.style.display =
+  "none";
+```
+
+}
+
+overview.style.display =
+"none";
+
+detail.style.display =
+"block";
+
+}
+
+/* ======================================================
+SHOW OVERVIEW
+====================================================== */
+
+function showEventOverview() {
+
+const overview =
+document.getElementById(
+"eventsOverview"
+);
+
+const detail =
+document.getElementById(
+"eventDetail"
+);
+
+if (!overview || !detail) return;
+
+detail.style.display =
+"none";
+
+overview.style.display =
+"block";
+
+}
+
+/* ======================================================
+PREVIOUS EVENTS TOGGLE
+====================================================== */
 
 const toggleBtn =
-  document.getElementById("togglePast");
+document.getElementById(
+"togglePast"
+);
 
 const pastList =
-  document.getElementById("pastEventsList");
-
+document.getElementById(
+"pastEventsList"
+);
 
 if (toggleBtn && pastList) {
 
-  toggleBtn.addEventListener("click", () => {
+toggleBtn.addEventListener(
+"click",
+() => {
 
-    const expanded =
-      toggleBtn.getAttribute("aria-expanded") === "true";
-
-
-    toggleBtn.setAttribute(
-      "aria-expanded",
-      String(!expanded)
-    );
-
-
-    pastList.hidden = expanded;
+```
+  const expanded =
+    toggleBtn.getAttribute(
+      "aria-expanded"
+    ) === "true";
 
 
-    toggleBtn.textContent = expanded
+  toggleBtn.setAttribute(
+    "aria-expanded",
+    String(!expanded)
+  );
+
+
+  pastList.hidden =
+    expanded;
+
+
+  toggleBtn.textContent =
+    expanded
       ? "Show past events"
       : "Hide past events";
 
-  });
+}
+```
+
+);
 
 }
 
-
-// ======================================================
-// INITIALISE
-// ======================================================
+/* ======================================================
+INITIALISE
+====================================================== */
 
 renderEvents();
 
+/* ======================================================
+OPEN EVENT FROM URL
+====================================================== */
 
-// ======================================================
-// OPEN EVENT FROM URL
-// Bijvoorbeeld:
-// events.html?id=coding-cafe-metadata-2026-09
-// ======================================================
-
-const urlParams =
-  new URLSearchParams(window.location.search);
+const params =
+new URLSearchParams(
+window.location.search
+);
 
 const eventId =
-  urlParams.get("id");
-
+params.get("id");
 
 if (eventId) {
-  openEvent(eventId);
+
+openEventWithoutHistory(
+eventId
+);
+
 }
