@@ -1,6 +1,10 @@
 // ---- Event data: voeg hier nieuwe events toe ----
+// "id" moet uniek zijn (wordt gebruikt om de juiste modal-inhoud te tonen)
+// "image" is optioneel: pad relatief aan de site-root, bv. "images/events/mijn-poster.png"
+// "link" is optioneel: registratielink, wordt getoond in de modal (alleen bij aankomende events)
 const events = [
   {
+    id: "coding-cafe-metadata-2026-09",
     date: "2026-09-17T11:30:00",
     endTime: "12:30",
     tag: "workshop",
@@ -12,6 +16,7 @@ const events = [
     link: "#"
   },
   {
+    id: "community-cafe-2026-09",
     date: "2026-09-17T16:00:00",
     endTime: "18:00",
     tag: "meetup",
@@ -23,7 +28,6 @@ const events = [
     link: "#"
   }
   // voeg hier meer events toe, ook oude — die verschijnen automatisch bij "Previous Events"
-  // "image" is optioneel: pad relatief aan de site-root, bv. "images/events/mijn-poster.png"
 ];
 
 function renderEvents() {
@@ -44,42 +48,33 @@ function renderEvents() {
   const upcomingList = document.getElementById('upcomingEventsList');
   const pastList = document.getElementById('pastEventsList');
 
-if (upcomingList) {
-  upcomingList.innerHTML = upcoming.length
-    ? upcoming.map(ev => eventCard(ev, false)).join('')
-    : '<p class="no-events">There are currently no events planned.</p>';
-}
+  if (upcomingList) {
+    upcomingList.innerHTML = upcoming.length
+      ? upcoming.map(ev => eventCard(ev, false)).join('')
+      : '<p class="no-events">There are currently no events planned.</p>';
+  }
 
-if (pastList) {
-  pastList.innerHTML = past.length
-    ? past.map(ev => eventCard(ev, true)).join('')
-    : '<p class="no-events">There are currently no past events listed.</p>';
-}
+  if (pastList) {
+    pastList.innerHTML = past.length
+      ? past.map(ev => eventCard(ev, true)).join('')
+      : '<p class="no-events">There are currently no past events listed.</p>';
+  }
 }
 
 function eventCard(ev, isPast) {
   const month = ev._date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
   const day = ev._date.getDate();
   const startTime = ev._date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-
   const locationHtml = ev.location ? ` · ${ev.location}` : '';
-  const linkHtml = (!isPast && ev.link)
-    ? `<a class="event-link" href="${ev.link}" target="_blank" rel="noopener noreferrer">Register →</a>`
-    : '';
-  const posterHtml = ev.image
-    ? `<img src="../${ev.image}" alt="${ev.title} poster" style="width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-bottom:14px;">`
-    : '';
 
   return `
-    <article class="event${isPast ? ' past' : ''}">
+    <article class="event${isPast ? ' past' : ''}" onclick="openEventModal('${ev.id}')">
       <div class="event-date"><span class="month">${month}</span><span class="day">${day}</span></div>
       <div class="event-content">
-        ${posterHtml}
         <span class="event-tag ${ev.tag}">${ev.tagLabel}</span>
         <h3>${ev.title}</h3>
         <p>${ev.description}</p>
         <div class="event-meta">${startTime}–${ev.endTime}${locationHtml}</div>
-        ${linkHtml}
       </div>
     </article>
   `;
@@ -98,3 +93,70 @@ if (toggleBtn) {
     toggleBtn.textContent = expanded ? 'Show past events' : 'Hide past events';
   });
 }
+
+// ---- Event modal (click on a card → full text + poster) ----
+function openEventModal(id) {
+  const ev = events.find(e => e.id === id);
+  if (!ev) return;
+
+  const backdrop = document.getElementById('eventModalBackdrop');
+  const poster = document.getElementById('eventModalPoster');
+  const tag = document.getElementById('eventModalTag');
+  const title = document.getElementById('eventModalTitle');
+  const meta = document.getElementById('eventModalMeta');
+  const description = document.getElementById('eventModalDescription');
+  const register = document.getElementById('eventModalRegister');
+  if (!backdrop) return;
+
+  const d = new Date(ev.date);
+  const dateLabel = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const startTime = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  const isPast = d < new Date();
+
+  if (ev.image) {
+    poster.src = "../" + ev.image;
+    poster.alt = ev.title;
+    poster.style.display = 'block';
+  } else {
+    poster.style.display = 'none';
+  }
+
+  tag.className = `event-tag ${ev.tag}`;
+  tag.textContent = ev.tagLabel;
+  title.textContent = ev.title;
+  meta.textContent = `${dateLabel} · ${startTime}–${ev.endTime}${ev.location ? ' · ' + ev.location : ''}`;
+  description.textContent = ev.description;
+
+  if (!isPast && ev.link) {
+    register.href = ev.link;
+    register.style.display = 'inline-block';
+  } else {
+    register.style.display = 'none';
+  }
+
+  backdrop.classList.add('open');
+  backdrop.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEventModal() {
+  const backdrop = document.getElementById('eventModalBackdrop');
+  if (!backdrop) return;
+  backdrop.classList.remove('open');
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+const eventModalClose = document.getElementById('eventModalClose');
+if (eventModalClose) eventModalClose.addEventListener('click', closeEventModal);
+
+const eventModalBackdrop = document.getElementById('eventModalBackdrop');
+if (eventModalBackdrop) {
+  eventModalBackdrop.addEventListener('click', (e) => {
+    if (e.target === eventModalBackdrop) closeEventModal();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeEventModal();
+});
