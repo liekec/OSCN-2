@@ -429,3 +429,52 @@ footer.site .flinks a:hover{color:#fff;}
   font-size:26px;margin:0 auto 18px;
 }
 .thanks-wrap .btn{margin-top:12px;}
+
+/* ============================================================
+   EVENT MODAL (click a card → full text + poster, same page)
+   ============================================================ */
+ 
+.event-modal-backdrop{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(21,34,56,.55);
+  backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  opacity:0;visibility:hidden;
+  transition:opacity .2s ease, visibility .2s ease;
+}
+.event-modal-backdrop.open{opacity:1;visibility:visible;}
+ 
+.event-modal{
+  background:#fff;border-radius:var(--radius);
+  max-width:640px;width:100%;max-height:85vh;overflow-y:auto;
+  position:relative;padding-bottom:32px;
+  transform:translateY(16px);
+  transition:transform .2s ease;
+}
+.event-modal-backdrop.open .event-modal{transform:translateY(0);}
+ 
+.event-modal-close{
+  position:absolute;top:14px;right:14px;z-index:1;
+  width:34px;height:34px;border-radius:50%;border:none;
+  background:rgba(21,34,56,.06);color:var(--navy);
+  font-size:18px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.event-modal-close:hover{background:rgba(21,34,56,.12);}
+ 
+.event-modal-poster{
+  width:100%;max-height:260px;object-fit:cover;
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+ 
+.event-modal-body{padding:28px 32px 0;}
+.event-modal-body h2{font-size:22px;margin-bottom:8px;}
+.event-modal-meta{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:16px;}
+.event-modal-body p{font-size:14.5px;color:var(--ink-soft);}
+.event-modal-body .btn{margin-top:10px;}
+ 
+@media (max-width:680px){
+  .event-modal-body{padding:24px 20px 0;}
+}
+ 
