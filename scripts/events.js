@@ -59,7 +59,7 @@ minute: "2-digit"
 CREATE EVENT CARD
 ============================================================ */
 
-function createEventCard(event, isPast = false) {
+function createEventCard(event, isPast) {
 const date = getEventDate(event);
 
 const month = date
@@ -71,42 +71,61 @@ month: "short"
 const day = date.getDate();
 const time = formatTime(date);
 
-const location = event.location
-? ` · ${event.location}`
-: "";
+let location = "";
 
-return `
-<article
-class="event${isPast ? " past" : ""}"
-data-event-id="${event.id}"
-tabindex="0"
-role="button"
-aria-label="Open event: ${event.title}">
+if (event.location) {
+location = " · " + event.location;
+}
+
+return (
+'<article class="event' +
+(isPast ? " past" : "") +
+'" data-event-id="' +
+event.id +
+'" tabindex="0" role="button" aria-label="Open event: ' +
+event.title +
+'">' +
 
 ```
-  <div class="event-date">
-    <span class="month">${month}</span>
-    <span class="day">${day}</span>
-  </div>
+  '<div class="event-date">' +
+    '<span class="month">' +
+      month +
+    '</span>' +
 
-  <div class="event-content">
-    <span class="event-tag ${event.tag}">
-      ${event.tagLabel}
-    </span>
+    '<span class="day">' +
+      day +
+    '</span>' +
+  '</div>' +
 
-    <h3>${event.title}</h3>
+  '<div class="event-content">' +
 
-    <p>${event.shortDescription}</p>
+    '<span class="event-tag ' +
+      event.tag +
+    '">' +
+      event.tagLabel +
+    '</span>' +
 
-    <div class="event-meta">
-      ${time}–${event.endTime}${location}
-    </div>
-  </div>
+    '<h3>' +
+      event.title +
+    '</h3>' +
 
-</article>
+    '<p>' +
+      event.shortDescription +
+    '</p>' +
+
+    '<div class="event-meta">' +
+      time +
+      "–" +
+      event.endTime +
+      location +
+    '</div>' +
+
+  '</div>' +
+
+'</article>'
 ```
 
-`;
+);
 }
 
 /* ============================================================
@@ -119,7 +138,7 @@ const now = new Date();
 const upcoming = [];
 const past = [];
 
-events.forEach(event => {
+events.forEach(function(event) {
 const date = getEventDate(event);
 
 ```
@@ -132,11 +151,15 @@ if (date >= now) {
 
 });
 
-upcoming.sort((a, b) => {
+/* Upcoming: earliest first */
+
+upcoming.sort(function(a, b) {
 return getEventDate(a) - getEventDate(b);
 });
 
-past.sort((a, b) => {
+/* Past: most recent first */
+
+past.sort(function(a, b) {
 return getEventDate(b) - getEventDate(a);
 });
 
@@ -146,32 +169,54 @@ document.getElementById("upcomingEventsList");
 const pastList =
 document.getElementById("pastEventsList");
 
-/* Upcoming */
+/* ==========================================================
+UPCOMING EVENTS
+========================================================== */
 
 if (upcomingList) {
+
+```
 if (upcoming.length > 0) {
-upcomingList.innerHTML =
-upcoming
-.map(event => createEventCard(event, false))
-.join("");
+
+  upcomingList.innerHTML =
+    upcoming
+      .map(function(event) {
+        return createEventCard(event, false);
+      })
+      .join("");
+
 } else {
-upcomingList.innerHTML =
-'<p class="no-events">There are currently no events planned.</p>';
+
+  upcomingList.innerHTML =
+    '<p class="no-events">There are currently no events planned.</p>';
 }
+```
+
 }
 
-/* Past */
+/* ==========================================================
+PAST EVENTS
+========================================================== */
 
 if (pastList) {
+
+```
 if (past.length > 0) {
-pastList.innerHTML =
-past
-.map(event => createEventCard(event, true))
-.join("");
+
+  pastList.innerHTML =
+    past
+      .map(function(event) {
+        return createEventCard(event, true);
+      })
+      .join("");
+
 } else {
-pastList.innerHTML =
-'<p class="no-events">There are currently no past events listed.</p>';
+
+  pastList.innerHTML =
+    '<p class="no-events">There are currently no past events listed.</p>';
 }
+```
+
 }
 }
 
@@ -179,9 +224,16 @@ pastList.innerHTML =
 OPEN EVENT DETAIL
 ============================================================ */
 
-function openEvent(id, updateUrl = true) {
+function openEvent(id, updateUrl) {
+
+if (typeof updateUrl === "undefined") {
+updateUrl = true;
+}
+
 const event =
-events.find(item => item.id === id);
+events.find(function(item) {
+return item.id === id;
+});
 
 if (!event) {
 return;
@@ -200,6 +252,8 @@ return;
 const date =
 getEventDate(event);
 
+/* Date */
+
 const dateLabel =
 date.toLocaleDateString("en-US", {
 weekday: "long",
@@ -208,68 +262,107 @@ day: "numeric",
 year: "numeric"
 });
 
+/* Time */
+
 const startTime =
 formatTime(date);
 
 /* Title */
 
-document.getElementById(
-"eventDetailTitle"
-).textContent = event.title;
+const titleElement =
+document.getElementById("eventDetailTitle");
+
+if (titleElement) {
+titleElement.textContent =
+event.title;
+}
 
 /* Tag */
 
 const tag =
 document.getElementById("eventDetailTag");
 
+if (tag) {
 tag.textContent =
 event.tagLabel;
 
+```
 tag.className =
-`event-tag ${event.tag}`;
+  "event-tag " + event.tag;
+```
+
+}
 
 /* Meta */
 
-document.getElementById(
-"eventDetailMeta"
-).textContent =
-`${dateLabel} · ${startTime}–${event.endTime}` +
-(event.location
-? ` · ${event.location}`
-: "");
+const meta =
+document.getElementById("eventDetailMeta");
+
+if (meta) {
+
+```
+let metaText =
+  dateLabel +
+  " · " +
+  startTime +
+  "–" +
+  event.endTime;
+
+if (event.location) {
+  metaText +=
+    " · " +
+    event.location;
+}
+
+meta.textContent =
+  metaText;
+```
+
+}
 
 /* Description */
 
+const description =
 document.getElementById(
 "eventDetailDescription"
-).textContent =
+);
+
+if (description) {
+description.textContent =
 event.description;
+}
 
 /* Image */
 
 const image =
-document.getElementById("eventDetailImage");
+document.getElementById(
+"eventDetailImage"
+);
 
+if (image) {
+
+```
 if (event.image) {
-image.src =
-event.image;
 
-```
-image.alt =
-  event.title;
+  image.src =
+    event.image;
 
-image.style.display =
-  "block";
-```
+  image.alt =
+    event.title;
+
+  image.style.display =
+    "block";
 
 } else {
-image.removeAttribute("src");
 
-```
-image.alt = "";
+  image.removeAttribute("src");
 
-image.style.display =
-  "none";
+  image.alt =
+    "";
+
+  image.style.display =
+    "none";
+}
 ```
 
 }
@@ -281,28 +374,34 @@ document.getElementById(
 "eventDetailRegister"
 );
 
+if (register) {
+
+```
 const isPast =
-date < new Date();
+  date < new Date();
 
 if (
-!isPast &&
-event.link &&
-event.link !== "#"
+  !isPast &&
+  event.link &&
+  event.link !== "#"
 ) {
-register.href =
-event.link;
 
-```
-register.style.display =
-  "inline-block";
-```
+  register.href =
+    event.link;
+
+  register.style.display =
+    "inline-block";
 
 } else {
-register.style.display =
-"none";
+
+  register.style.display =
+    "none";
+}
+```
+
 }
 
-/* Switch overview → detail */
+/* Switch overview to detail */
 
 overview.style.display =
 "none";
@@ -313,10 +412,13 @@ detail.style.display =
 /* Update URL */
 
 if (updateUrl) {
-const url =
-`${window.location.pathname}?id=${encodeURIComponent(event.id)}`;
 
 ```
+const url =
+  window.location.pathname +
+  "?id=" +
+  encodeURIComponent(event.id);
+
 history.pushState(
   { eventId: event.id },
   "",
@@ -338,12 +440,21 @@ behavior: "smooth"
 CLOSE EVENT DETAIL
 ============================================================ */
 
-function closeEventDetail(updateUrl = true) {
+function closeEventDetail(updateUrl) {
+
+if (typeof updateUrl === "undefined") {
+updateUrl = true;
+}
+
 const overview =
-document.getElementById("eventsOverview");
+document.getElementById(
+"eventsOverview"
+);
 
 const detail =
-document.getElementById("eventDetail");
+document.getElementById(
+"eventDetail"
+);
 
 if (!overview || !detail) {
 return;
@@ -356,11 +467,15 @@ overview.style.display =
 "block";
 
 if (updateUrl) {
+
+```
 history.pushState(
-{},
-"",
-window.location.pathname
+  {},
+  "",
+  window.location.pathname
 );
+```
+
 }
 
 window.scrollTo({
@@ -373,112 +488,164 @@ behavior: "smooth"
 BACK TO EVENTS BUTTON
 ============================================================ */
 
-document
-.getElementById("backToEvents")
-?.addEventListener("click", function() {
-closeEventDetail();
-});
+document.addEventListener(
+"DOMContentLoaded",
+function() {
+
+```
+const backButton =
+  document.getElementById(
+    "backToEvents"
+  );
+
+if (backButton) {
+
+  backButton.addEventListener(
+    "click",
+    function() {
+      closeEventDetail();
+    }
+  );
+}
+```
+
+}
+);
 
 /* ============================================================
 EVENT CARD CLICK
 ============================================================ */
 
-document.addEventListener("click", function(event) {
+document.addEventListener(
+"click",
+function(event) {
+
+```
 const card =
-event.target.closest(
-".event[data-event-id]"
-);
+  event.target.closest(
+    ".event[data-event-id]"
+  );
 
 if (!card) {
-return;
+  return;
 }
 
 openEvent(
-card.dataset.eventId
+  card.dataset.eventId
 );
-});
+```
+
+}
+);
 
 /* ============================================================
 EVENT CARD KEYBOARD
 ============================================================ */
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener(
+"keydown",
+function(event) {
+
+```
 if (
-event.key !== "Enter" &&
-event.key !== " "
+  event.key !== "Enter" &&
+  event.key !== " "
 ) {
-return;
+  return;
 }
 
 const card =
-event.target.closest(
-".event[data-event-id]"
-);
+  event.target.closest(
+    ".event[data-event-id]"
+  );
 
 if (!card) {
-return;
+  return;
 }
 
 event.preventDefault();
 
 openEvent(
-card.dataset.eventId
+  card.dataset.eventId
 );
-});
+```
+
+}
+);
 
 /* ============================================================
 PAST EVENTS TOGGLE
 ============================================================ */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener(
+"DOMContentLoaded",
+function() {
+
+```
 const togglePast =
-document.getElementById("togglePast");
+  document.getElementById(
+    "togglePast"
+  );
 
 const pastEvents =
-document.getElementById("pastEventsList");
+  document.getElementById(
+    "pastEventsList"
+  );
 
-if (!togglePast || !pastEvents) {
-return;
+if (
+  !togglePast ||
+  !pastEvents
+) {
+  return;
 }
+
 
 togglePast.addEventListener(
-"click",
-function() {
-const isOpen =
-!pastEvents.hasAttribute("hidden");
+  "click",
+  function() {
 
-```
-  if (isOpen) {
-    pastEvents.setAttribute(
-      "hidden",
-      ""
-    );
+    const isOpen =
+      !pastEvents.hasAttribute(
+        "hidden"
+      );
 
-    togglePast.textContent =
-      "Show past events";
 
-    togglePast.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-  } else {
-    pastEvents.removeAttribute(
-      "hidden"
-    );
+    if (isOpen) {
 
-    togglePast.textContent =
-      "Hide past events";
+      pastEvents.setAttribute(
+        "hidden",
+        ""
+      );
 
-    togglePast.setAttribute(
-      "aria-expanded",
-      "true"
-    );
+      togglePast.textContent =
+        "Show past events";
+
+      togglePast.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    } else {
+
+      pastEvents.removeAttribute(
+        "hidden"
+      );
+
+      togglePast.textContent =
+        "Hide past events";
+
+      togglePast.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+    }
+
   }
-}
+);
 ```
 
+}
 );
-});
 
 /* ============================================================
 BROWSER BACK / FORWARD
@@ -487,21 +654,26 @@ BROWSER BACK / FORWARD
 window.addEventListener(
 "popstate",
 function() {
-const params =
-new URLSearchParams(
-window.location.search
-);
 
 ```
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
 const id =
   params.get("id");
 
+
 if (id) {
+
   openEvent(
     id,
     false
   );
+
 } else {
+
   closeEventDetail(
     false
   );
@@ -530,9 +702,11 @@ const initialEventId =
 initialParams.get("id");
 
 if (initialEventId) {
+
 openEvent(
 initialEventId,
 false
 );
 }
+
 
