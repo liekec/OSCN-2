@@ -18,13 +18,6 @@ const newsArticles = [
   excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
   image: "images/news/Landscape poster1.png",
   content: `
-{
-  slug: "open-science-week",
-  date: "September 10, 2026",
-  title: "Celebrate Open Science Week with OSCN!",
-  excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
-  image: "images/news/Landscape poster1.png",
-  content: `
     <p>On behalf of the OSCN organising team, we are happy to invite you to join us in celebrating National Open Science Week!</p>
     <p>To celebrate together as a community, we’ve organised two special events on Thursday, September 17. We’re excited to finally share them with you – you can find more information below.</p>
     <p>Both events are open to members and non-members, so feel free to bring along a colleague or friend who might be interested as well. We’d especially love to see as many of you as possible at our Community Café in the afternoon – a great opportunity to meet, celebrate, and connect with others who are passionate about Open Science in Nijmegen.</p>
