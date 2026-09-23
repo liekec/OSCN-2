@@ -283,8 +283,6 @@ const image =
 document.getElementById("eventDetailImage");
 
 if (event.image) {
-
-```
 image.src =
   event.image;
 
@@ -390,9 +388,13 @@ history.pushState(
 window.scrollTo({
 top: 0,
 behavior: "smooth"
-});
+}
 
 }
+
+document.getElementById("backToEvents")?.addEventListener("click", function() {
+  closeEventDetail();
+});
 
 /* ============================================================
 EVENT CARD CLICK
