@@ -1,12 +1,14 @@
 // ---- Event data: voeg hier nieuwe events toe ----
 const events = [
   {
-    date: "2026-09-17T12:00:00",
-    endTime: "13:00",
+    date: "2026-09-17T11:30:00",
+    endTime: "12:30",
     tag: "workshop",
     tagLabel: "Workshop",
-    title: "Coding Café",
-    description: "Learn all about metadata and get hands-on experience."
+    title: "Coding Café - Metadata",
+    location: "EOS N 00.330",
+    description: "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
+    link: "#"
   },
   {
     date: "2026-09-17T16:00:00",
@@ -14,7 +16,9 @@ const events = [
     tag: "meetup",
     tagLabel: "Meet-up",
     title: "Community Café",
-    description: "A celebration of the Open Science Week with short member pitches."
+    location: "EOS 01.220 & The Yard",
+    description: "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
+    link: "#"
   }
   // voeg hier meer events toe, ook oude — die verschijnen automatisch bij "Previous Events"
 ];
@@ -55,6 +59,11 @@ function eventCard(ev, isPast) {
   const day = ev._date.getDate();
   const startTime = ev._date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
+  const locationHtml = ev.location ? ` · ${ev.location}` : '';
+  const linkHtml = (!isPast && ev.link)
+    ? `<a class="event-link" href="${ev.link}" target="_blank" rel="noopener noreferrer">Register →</a>`
+    : '';
+
   return `
     <article class="event${isPast ? ' past' : ''}">
       <div class="event-date"><span class="month">${month}</span><span class="day">${day}</span></div>
@@ -62,7 +71,8 @@ function eventCard(ev, isPast) {
         <span class="event-tag ${ev.tag}">${ev.tagLabel}</span>
         <h3>${ev.title}</h3>
         <p>${ev.description}</p>
-        <div class="event-meta">${startTime}–${ev.endTime}</div>
+        <div class="event-meta">${startTime}–${ev.endTime}${locationHtml}</div>
+        ${linkHtml}
       </div>
     </article>
   `;
