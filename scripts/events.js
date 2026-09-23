@@ -6,55 +6,34 @@ const events = [
 
 {
 id: "coding-cafe-metadata-2026-09",
-
-```
 date: "2026-09-17T11:30:00",
 endTime: "12:30",
-
 tag: "workshop",
 tagLabel: "Workshop",
-
 title: "Coding Café - Metadata",
-
 location: "EOS N 00.330",
-
 image: "../images/events/Poster_coding_cafe.png",
-
 shortDescription:
   "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
-
 description:
   "Metadata helps others find, understand and reuse your research software, and can even help your work get more citations. During this hands-on Coding Café, we'll explore why metadata matters, what information you need, and how you can automate its creation. After a short introduction and demonstration of the tool, we'll get hands-on with a code-along so you can try it out with your own research software project — bring your own laptop! No need to be a metadata expert, just bring your project and your curiosity. This event is sponsored by and in collaboration with eScience Center. Registration is required for catering purposes.",
-
 link: "#"
-```
 
 },
 
 {
 id: "community-cafe-2026-09",
-
-```
 date: "2026-09-17T16:00:00",
 endTime: "18:00",
-
 tag: "meetup",
 tagLabel: "Meet-up",
-
 title: "Community Café",
-
 location: "EOS 01.220 & The Yard",
-
 image: "../images/events/Poster_community_cafe.png",
-
 shortDescription:
   "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
-
 description:
   "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
-
-link: "#"
-```
 
 }
 
@@ -109,7 +88,6 @@ tabindex="0"
 role="button"
 aria-label="Open event: ${event.title}">
 
-```
   <div class="event-date">
 
     <span class="month">
@@ -143,8 +121,6 @@ aria-label="Open event: ${event.title}">
   </div>
 
 </article>
-```
-
 `;
 }
 
@@ -160,8 +136,6 @@ const upcoming = [];
 const past = [];
 
 events.forEach(event => {
-
-```
 const date = getEventDate(event);
 
 if (date >= now) {
@@ -173,8 +147,6 @@ if (date >= now) {
   past.push(event);
 
 }
-```
-
 });
 
 /* Sort upcoming: earliest first */
@@ -198,30 +170,21 @@ document.getElementById("pastEventsList");
 /* Upcoming */
 
 if (upcomingList) {
-
-```
 if (upcoming.length > 0) {
 
   upcomingList.innerHTML =
     upcoming
       .map(event => createEventCard(event, false))
       .join("");
-
 } else {
-
   upcomingList.innerHTML =
     '<p class="no-events">There are currently no events planned.</p>';
-
 }
-```
-
 }
 
 /* Past */
 
 if (pastList) {
-
-```
 if (past.length > 0) {
 
   pastList.innerHTML =
@@ -235,8 +198,6 @@ if (past.length > 0) {
     '<p class="no-events">There are currently no past events listed.</p>';
 
 }
-```
-
 }
 
 }
@@ -332,19 +293,13 @@ image.alt =
 
 image.style.display =
   "block";
-```
-
 } else {
-
-```
 image.removeAttribute("src");
 
 image.alt = "";
 
 image.style.display =
   "none";
-```
-
 }
 
 /* Register button */
@@ -362,22 +317,14 @@ if (
 event.link &&
 event.link !== "#"
 ) {
-
-```
 register.href =
   event.link;
 
 register.style.display =
   "inline-block";
-```
-
 } else {
-
-```
 register.style.display =
   "none";
-```
-
 }
 
 /* Switch overview → detail */
@@ -391,8 +338,6 @@ detail.style.display =
 /* Update URL */
 
 if (updateUrl) {
-
-```
 const url =
   `${window.location.pathname}?id=${encodeURIComponent(event.id)}`;
 
@@ -401,8 +346,6 @@ history.pushState(
   "",
   url
 );
-```
-
 }
 
 /* Scroll to top */
@@ -437,15 +380,11 @@ overview.style.display =
 "block";
 
 if (updateUrl) {
-
-```
 history.pushState(
   {},
   "",
   window.location.pathname
 );
-```
-
 }
 
 window.scrollTo({
@@ -525,8 +464,6 @@ return;
 togglePast.addEventListener(
 "click",
 function() {
-
-```
   const isOpen =
     !pastEvents.hasAttribute("hidden");
 
@@ -563,8 +500,6 @@ function() {
   }
 
 }
-```
-
 );
 
 });
@@ -576,16 +511,12 @@ BROWSER BACK / FORWARD
 window.addEventListener(
 "popstate",
 function() {
-
-```
 const params =
   new URLSearchParams(
     window.location.search
   );
-
 const id =
   params.get("id");
-
 
 if (id) {
 
@@ -601,8 +532,6 @@ if (id) {
   );
 
 }
-```
-
 }
 );
 
