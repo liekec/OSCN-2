@@ -371,6 +371,3 @@ window.addEventListener(
     }
   }
 );
-}
-);
-
