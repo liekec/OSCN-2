@@ -256,8 +256,8 @@ function openEvent(eventId) {
     }
   }
 
-  overview.hidden = true;
-  detail.hidden = false;
+  overview.style.display = "none";
+  detail.style.display = "block";
 
   window.history.pushState(
     { eventId: event.id },
@@ -282,8 +282,8 @@ function closeEvent() {
     return;
   }
 
-  detail.hidden = true;
-  overview.hidden = false;
+  detail.style.display = "none";
+  overview.style.display = "block";
 
   window.history.pushState(
     {},
@@ -365,8 +365,8 @@ window.addEventListener(
         document.getElementById("eventsOverview");
 
       if (detail && overview) {
-        detail.hidden = true;
-        overview.hidden = false;
+        detail.style.display = "none";
+        overview.style.display = "block";
       }
     }
   }
