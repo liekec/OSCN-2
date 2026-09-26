@@ -11,7 +11,7 @@ const events = [
     tagLabel: "Workshop",
     title: "Coding Café - Metadata",
     location: "EOS N 00.330",
-    image: "../images/events/Poster_coding_cafe.png",
+    image: "../images/events/Poster coding cafe + QR.png",
     shortDescription:
       "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
     description:
