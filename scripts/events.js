@@ -11,7 +11,7 @@ const events = [
     tagLabel: "Workshop",
     title: "Coding Café - Metadata",
     location: "EOS N 00.330",
-    image: "../images/events/Poster_coding_cafe.png",
+    image: "../images/events/Poster coding cafe + QR.png",
     shortDescription:
       "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
     description:
@@ -26,7 +26,7 @@ const events = [
     tagLabel: "Meet-up",
     title: "Community Café",
     location: "EOS 01.220 & The Yard",
-    image: "../images/events/Poster_community_cafe.png",
+    image: "../images/events/community cafe!.jpeg",
     shortDescription:
       "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
     description:
