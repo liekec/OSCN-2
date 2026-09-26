@@ -44,7 +44,7 @@ const events = [
     org: "OSCNL",
     title: "OSC-NL Barcamp 2026",
     location: "Delft",
-    image: "",
+    image: "../images/events/barcamp-2026.jpeg",
     shortDescription:
       "A community-driven day of open science, peer exchange, collaboration — and pizza. No fixed programme: you help shape it on the spot.",
     description:
@@ -60,7 +60,7 @@ const events = [
     org: "OSCNL",
     title: "National Open Science Festival 2026",
     location: "TU Delft, Delft",
-    image: "",
+    image: "../images/events/OSF-2026.png",
     shortDescription:
       "The place to be for anyone working on or interested in open science — inspiring sessions, practical examples and networking, hosted with TU Delft.",
     description:
