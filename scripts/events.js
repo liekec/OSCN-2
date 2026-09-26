@@ -11,7 +11,7 @@ const events = [
     tagLabel: "Workshop",
     title: "Coding Café - Metadata",
     location: "EOS N 00.330",
-    image: "../images/events/Poster coding cafe + QR.png",
+    image: "../images/events/Poster_coding_cafe.png",
     shortDescription:
       "A hands-on Coding Café about research software metadata, with a code-along using your own project.",
     description:
@@ -26,7 +26,7 @@ const events = [
     tagLabel: "Meet-up",
     title: "Community Café",
     location: "EOS 01.220 & The Yard",
-    image: "../images/events/community cafe!.jpeg",
+    image: "../images/events/Poster_community_cafe.png",
     shortDescription:
       "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
     description:
@@ -34,6 +34,13 @@ const events = [
     link: "#"
   }
 ];
+
+/* How many previous events are shown before the "view more" button appears */
+var PAST_EVENTS_INITIAL_COUNT = 2;
+
+/* State for the previous-events "view more" toggle */
+var allPastEvents = [];
+var pastExpanded = false;
 
 function formatDate(dateString) {
   var date = new Date(dateString);
@@ -56,7 +63,7 @@ function formatTime(dateString, endTime) {
   return start + "–" + endTime;
 }
 
-function createEventCard(event) {
+function createEventCard(event, isPast) {
   var date = new Date(event.date);
   var day = date.getDate();
   var month = date.toLocaleDateString("en-GB", {
@@ -64,13 +71,14 @@ function createEventCard(event) {
   });
 
   return (
-    '<article class="event" data-event-id="' +
+    '<article class="event' +
+    (isPast ? ' past' : '') +
+    '" data-event-id="' +
     event.id +
     '" tabindex="0" role="button" aria-label="Open event: ' +
     event.title +
     '">' +
     '<div class="event-date">' +
-    /* class names now match style.css (.event-date .day / .event-date .month) */
     '<span class="day">' +
     day +
     '</span>' +
@@ -97,6 +105,7 @@ function createEventCard(event) {
     '<p>' +
     event.shortDescription +
     '</p>' +
+    '<span class="event-cta">Click for more info →</span>' +
     '</div>' +
     '</article>'
   );
@@ -138,25 +147,78 @@ function renderEvents() {
   if (upcoming.length > 0) {
     upcomingContainer.classList.remove("is-empty");
     upcomingContainer.innerHTML =
-      upcoming.map(createEventCard).join("");
+      upcoming.map(function(event) {
+        return createEventCard(event, false);
+      }).join("");
   } else {
     upcomingContainer.classList.add("is-empty");
-    /* class name now matches style.css (.no-events) */
     upcomingContainer.innerHTML =
       '<p class="no-events">There are currently no events planned.</p>';
   }
 
+  allPastEvents = past;
+  pastExpanded = false;
+
   if (past.length > 0) {
     pastContainer.classList.remove("is-empty");
-    pastContainer.innerHTML =
-      past.map(createEventCard).join("");
   } else {
     pastContainer.classList.add("is-empty");
-    pastContainer.innerHTML =
-      '<p class="no-events">There are no previous events.</p>';
   }
 
+  paintPastEvents();
   setupEventCards();
+}
+
+/* Renders the previous-events list based on current allPastEvents/pastExpanded
+   state, and shows/hides + labels the "view more" button accordingly. */
+function paintPastEvents() {
+  var pastContainer =
+    document.getElementById("pastEventsList");
+
+  var moreRow =
+    document.getElementById("pastEventsMoreRow");
+
+  var toggleBtn =
+    document.getElementById("togglePast");
+
+  if (!pastContainer) {
+    return;
+  }
+
+  if (allPastEvents.length === 0) {
+    pastContainer.innerHTML =
+      '<p class="no-events">There are no previous events.</p>';
+
+    if (moreRow) {
+      moreRow.style.display = "none";
+    }
+
+    return;
+  }
+
+  var visible = pastExpanded
+    ? allPastEvents
+    : allPastEvents.slice(0, PAST_EVENTS_INITIAL_COUNT);
+
+  pastContainer.innerHTML =
+    visible.map(function(event) {
+      return createEventCard(event, true);
+    }).join("");
+
+  if (moreRow && toggleBtn) {
+    if (allPastEvents.length > PAST_EVENTS_INITIAL_COUNT) {
+      moreRow.style.display = "";
+      toggleBtn.textContent = pastExpanded
+        ? "Show fewer previous events"
+        : "View more previous events";
+      toggleBtn.setAttribute(
+        "aria-expanded",
+        pastExpanded ? "true" : "false"
+      );
+    } else {
+      moreRow.style.display = "none";
+    }
+  }
 }
 
 function setupEventCards() {
@@ -219,13 +281,19 @@ function openEvent(eventId) {
   var detailRegister =
     document.getElementById("eventDetailRegister");
 
+  var posterWrap =
+    document.getElementById("eventDetailPosterWrap");
+
   if (detailImage) {
     if (event.image) {
       detailImage.src = event.image;
       detailImage.alt = event.title;
-      detailImage.hidden = false;
-    } else {
-      detailImage.hidden = true;
+
+      if (posterWrap) {
+        posterWrap.hidden = false;
+      }
+    } else if (posterWrap) {
+      posterWrap.hidden = true;
     }
   }
 
@@ -304,6 +372,38 @@ function closeEvent() {
   );
 }
 
+/* ============================================================
+   POSTER LIGHTBOX
+   ============================================================ */
+
+function openPosterLightbox(src, alt) {
+  var backdrop =
+    document.getElementById("posterLightbox");
+
+  var img =
+    document.getElementById("posterLightboxImage");
+
+  if (!backdrop || !img || !src) {
+    return;
+  }
+
+  img.src = src;
+  img.alt = alt || "";
+
+  backdrop.classList.add("open");
+}
+
+function closePosterLightbox() {
+  var backdrop =
+    document.getElementById("posterLightbox");
+
+  if (!backdrop) {
+    return;
+  }
+
+  backdrop.classList.remove("open");
+}
+
 document.addEventListener(
   "DOMContentLoaded",
   function() {
@@ -312,20 +412,13 @@ document.addEventListener(
     var togglePast =
       document.getElementById("togglePast");
 
-    var pastEventsList =
-      document.getElementById("pastEventsList");
-
-    if (togglePast && pastEventsList) {
+    if (togglePast) {
       togglePast.addEventListener(
         "click",
         function() {
-          pastEventsList.hidden =
-            !pastEventsList.hidden;
-
-          togglePast.textContent =
-            pastEventsList.hidden
-              ? "Show past events"
-              : "Hide past events";
+          pastExpanded = !pastExpanded;
+          paintPastEvents();
+          setupEventCards();
         }
       );
     }
@@ -341,6 +434,72 @@ document.addEventListener(
         }
       );
     }
+
+    var posterWrap =
+      document.getElementById("eventDetailPosterWrap");
+
+    if (posterWrap) {
+      posterWrap.addEventListener(
+        "click",
+        function() {
+          var img =
+            document.getElementById("eventDetailImage");
+
+          if (img && img.src) {
+            openPosterLightbox(img.src, img.alt);
+          }
+        }
+      );
+
+      posterWrap.addEventListener(
+        "keydown",
+        function(e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+
+            var img =
+              document.getElementById("eventDetailImage");
+
+            if (img && img.src) {
+              openPosterLightbox(img.src, img.alt);
+            }
+          }
+        }
+      );
+    }
+
+    var lightboxClose =
+      document.getElementById("posterLightboxClose");
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener(
+        "click",
+        closePosterLightbox
+      );
+    }
+
+    var lightboxBackdrop =
+      document.getElementById("posterLightbox");
+
+    if (lightboxBackdrop) {
+      lightboxBackdrop.addEventListener(
+        "click",
+        function(e) {
+          if (e.target === lightboxBackdrop) {
+            closePosterLightbox();
+          }
+        }
+      );
+    }
+
+    document.addEventListener(
+      "keydown",
+      function(e) {
+        if (e.key === "Escape") {
+          closePosterLightbox();
+        }
+      }
+    );
 
     var params =
       new URLSearchParams(
