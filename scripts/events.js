@@ -70,10 +70,11 @@ function createEventCard(event) {
     event.title +
     '">' +
     '<div class="event-date">' +
-    '<span class="event-day">' +
+    /* class names now match style.css (.event-date .day / .event-date .month) */
+    '<span class="day">' +
     day +
     '</span>' +
-    '<span class="event-month">' +
+    '<span class="month">' +
     month +
     '</span>' +
     '</div>' +
@@ -135,19 +136,24 @@ function renderEvents() {
   });
 
   if (upcoming.length > 0) {
+    upcomingContainer.classList.remove("is-empty");
     upcomingContainer.innerHTML =
       upcoming.map(createEventCard).join("");
   } else {
+    upcomingContainer.classList.add("is-empty");
+    /* class name now matches style.css (.no-events) */
     upcomingContainer.innerHTML =
-      '<p class="events-empty">There are currently no events planned.</p>';
+      '<p class="no-events">There are currently no events planned.</p>';
   }
 
   if (past.length > 0) {
+    pastContainer.classList.remove("is-empty");
     pastContainer.innerHTML =
       past.map(createEventCard).join("");
   } else {
+    pastContainer.classList.add("is-empty");
     pastContainer.innerHTML =
-      '<p class="events-empty">There are no previous events.</p>';
+      '<p class="no-events">There are no previous events.</p>';
   }
 
   setupEventCards();
@@ -265,8 +271,14 @@ function openEvent(eventId) {
     "?id=" + encodeURIComponent(event.id)
   );
 
+  /* Scroll to the top of the detail section itself, not the whole page.
+     Offset accounts for the sticky 80px header so the title isn't hidden under it. */
+  var headerOffset = 80;
+  var elementPosition =
+    detail.getBoundingClientRect().top + window.pageYOffset;
+
   window.scrollTo({
-    top: 0,
+    top: elementPosition - headerOffset,
     behavior: "smooth"
   });
 }
