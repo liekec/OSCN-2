@@ -197,6 +197,7 @@ section.block.alt{background:var(--cream);}
 /* When a list only holds the empty-state message, drop the gap/min-height feel */
 .events-list.is-empty{gap:0;}
 .event{
+  position:relative;
   display:grid;grid-template-columns:100px 1fr;gap:26px;
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;align-items:center;transition:box-shadow .25s ease, transform .25s ease;
@@ -215,6 +216,17 @@ section.block.alt{background:var(--cream);}
 }
 .event-tag.workshop{background:#E4F0FB;color:var(--blue);}
 .event-tag.meetup{background:#FBE7E2;color:var(--terracotta);}
+.event-tag.barcamp{background:#FDF0E4;color:#C1440E;}
+.event-tag.festival{background:#EAF3FB;color:var(--navy);}
+
+/* ---------- org badge (top-right of each event card) ---------- */
+.event-org{
+  position:absolute;top:14px;right:14px;
+  font-size:10.5px;font-weight:800;letter-spacing:.06em;
+  padding:4px 10px;border-radius:20px;text-transform:uppercase;
+}
+.event-org.org-oscn{background:#FBE7E2;color:var(--terracotta);}
+.event-org.org-oscnl{background:#FDF0E4;color:#E07B1A;}
 .event-content h3{font-size:18px;margin-bottom:6px;}
 .event-content p{font-size:14px;margin-bottom:10px;}
 .event-meta{font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:0;}
