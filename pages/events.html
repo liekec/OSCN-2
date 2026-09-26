@@ -128,21 +128,21 @@
             <h2>Previous Events</h2>
           </div>
 
-          <button
-            type="button"
-            class="toggle-past"
-            id="togglePast"
-            aria-expanded="false"
-            aria-controls="pastEventsList">
-            Show past events
-          </button>
-
         </div>
 
         <div
           class="events-list past-events"
-          id="pastEventsList"
-          hidden>
+          id="pastEventsList">
+        </div>
+
+        <div class="events-more-row" id="pastEventsMoreRow" style="display: none;">
+          <button
+            type="button"
+            class="toggle-past"
+            id="togglePast"
+            aria-expanded="false">
+            View more previous events
+          </button>
         </div>
 
       </div>
@@ -170,12 +170,20 @@
 
       <div class="event-detail-card">
 
-        <div>
+        <div
+          class="event-detail-poster-wrap"
+          id="eventDetailPosterWrap"
+          role="button"
+          tabindex="0"
+          aria-label="Click to expand poster">
           <img
             id="eventDetailImage"
             class="event-detail-poster"
             src=""
             alt="">
+          <span class="event-detail-poster-hint">
+            🔍 Click to expand
+          </span>
         </div>
 
         <div class="event-detail-info">
@@ -220,6 +228,24 @@
   </section>
 
 </main>
+
+
+<!-- POSTER LIGHTBOX -->
+
+<div class="event-modal-backdrop" id="posterLightbox">
+  <button
+    type="button"
+    class="event-modal-close"
+    id="posterLightboxClose"
+    aria-label="Close">
+    ×
+  </button>
+  <img
+    id="posterLightboxImage"
+    class="lightbox-poster"
+    src=""
+    alt="">
+</div>
 
 
 <!-- FOOTER -->
@@ -378,4 +404,3 @@
 
 </body>
 </html>
-
