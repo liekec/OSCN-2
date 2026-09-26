@@ -49,7 +49,7 @@ const events = [
       "A community-driven day of open science, peer exchange, collaboration — and pizza. No fixed programme: you help shape it on the spot.",
     description:
       "This October, Delft becomes the meeting place for the Dutch open science community with two inspiring back-to-back events. The OSC-NL Barcamp is a community-driven day of open science, peer exchange, collaboration, and pizza. The Barcamp has no predetermined programme — participants propose and shape the sessions together on the spot. From newcomers to experienced practitioners, everyone is welcome to join the conversation and contribute ideas. Register via the link below.",
-    link: "https://osc-international.com/osc-nl-barcamp-2026/"
+    link: "https://osc-nl.codeberg.page/content/events/barcamp2026/"
   },
   {
     id: "national-open-science-festival-2026",
@@ -65,7 +65,7 @@ const events = [
       "The place to be for anyone working on or interested in open science — inspiring sessions, practical examples and networking, hosted with TU Delft.",
     description:
       "Hosted this year together with Delft University of Technology, the National Open Science Festival is the place to be for anyone working on or interested in open science. Expect inspiring sessions, practical examples, networking opportunities, and discussions with researchers, support staff, and open science communities from across the Netherlands. Register for free or submit a contribution via the link below. Whether you join one or both October events, these two days offer a fantastic opportunity to connect and help shape the future of open science together.",
-    link: "https://lnkd.in/ekMWAspu"
+    link: "https://opensciencefestival.nl/registration"
   }
 ];
 
