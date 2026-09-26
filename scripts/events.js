@@ -9,6 +9,7 @@ const events = [
     endTime: "12:30",
     tag: "workshop",
     tagLabel: "Workshop",
+    org: "OSCN",
     title: "Coding Café - Metadata",
     location: "EOS N 00.330",
     image: "../images/events/Poster coding cafe + QR.png",
@@ -24,6 +25,7 @@ const events = [
     endTime: "18:00",
     tag: "meetup",
     tagLabel: "Meet-up",
+    org: "OSCN",
     title: "Community Café",
     location: "EOS 01.220 & The Yard",
     image: "../images/events/community cafe!.jpeg",
@@ -32,6 +34,38 @@ const events = [
     description:
       "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
     link: "#"
+  },
+  {
+    id: "oscnl-barcamp-2026",
+    date: "2026-10-13T09:30:00",
+    endTime: "17:00",
+    tag: "barcamp",
+    tagLabel: "Barcamp",
+    org: "OSCNL",
+    title: "OSC-NL Barcamp 2026",
+    location: "Delft",
+    image: "",
+    shortDescription:
+      "A community-driven day of open science, peer exchange, collaboration — and pizza. No fixed programme: you help shape it on the spot.",
+    description:
+      "This October, Delft becomes the meeting place for the Dutch open science community with two inspiring back-to-back events. The OSC-NL Barcamp is a community-driven day of open science, peer exchange, collaboration, and pizza. The Barcamp has no predetermined programme — participants propose and shape the sessions together on the spot. From newcomers to experienced practitioners, everyone is welcome to join the conversation and contribute ideas. Register via the link below.",
+    link: "https://osc-international.com/osc-nl-barcamp-2026/"
+  },
+  {
+    id: "national-open-science-festival-2026",
+    date: "2026-10-14T09:00:00",
+    endTime: "17:30",
+    tag: "festival",
+    tagLabel: "Festival",
+    org: "OSCNL",
+    title: "National Open Science Festival 2026",
+    location: "TU Delft, Delft",
+    image: "",
+    shortDescription:
+      "The place to be for anyone working on or interested in open science — inspiring sessions, practical examples and networking, hosted with TU Delft.",
+    description:
+      "Hosted this year together with Delft University of Technology, the National Open Science Festival is the place to be for anyone working on or interested in open science. Expect inspiring sessions, practical examples, networking opportunities, and discussions with researchers, support staff, and open science communities from across the Netherlands. Register for free or submit a contribution via the link below. Whether you join one or both October events, these two days offer a fantastic opportunity to connect and help shape the future of open science together.",
+    link: "https://lnkd.in/ekMWAspu"
   }
 ];
 
@@ -78,6 +112,13 @@ function createEventCard(event, isPast) {
     '" tabindex="0" role="button" aria-label="Open event: ' +
     event.title +
     '">' +
+    (event.org
+      ? '<span class="event-org org-' +
+        event.org.toLowerCase() +
+        '">' +
+        event.org +
+        '</span>'
+      : '') +
     '<div class="event-date">' +
     '<span class="day">' +
     day +
