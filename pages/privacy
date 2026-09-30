@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy &amp; cookies | OSCN</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="../index.html">
+      <img src="../images/OSCN_logo_transparant.png" alt="OSCN Logo">
+    </a>
+    <button class="nav-toggle" id="navToggle">MENU</button>
+    <nav class="primary" id="primaryNav">
+      <ul>
+        <li><a href="../index.html" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10.5L12 3l9 7.5"></path>
+          <path d="M5 10v10h5v-6h4v6h5V10"></path>
+        </svg></a></li>
+        <li class="dropdown">
+          <a href="../pages/about.html">About</a>
+          <div class="dropdown-content">
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../pages/resources.html">Resources</a>
+          </div>
+        </li>
+        <li><a href="../pages/events.html">Events</a></li>
+        <li class="dropdown">
+          <a href="../pages/news.html">News</a>
+          <div class="dropdown-content">
+            <a href="../pages/news.html">News</a>
+            <a href="../pages/newsletters.html">Newsletters</a>
+          </div>
+        </li>
+        <li><a href="../pages/members.html">Members</a></li>
+        <li><a href="../pages/join.html" class="join-btn">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section class="page-hero reveal">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot3"><span></span><span></span><span></span></span>PRIVACY</div>
+    <h1>Privacy &amp; cookies</h1>
+    <p class="lede">How Open Science Community Nijmegen handles your personal data and cookies.</p>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="wrap">
+    <div style="max-width:760px;">
+      <h2>Who is responsible?</h2>
+      <p>Open Science Community Nijmegen (OSCN) is responsible for the personal data described on this page. OSCN is part of the <a href="https://osc-international.com" style="color:var(--blue);font-weight:700;">International Network of Open Science and Scholarship Communities (INOSC)</a>. You can reach us at <a href="mailto:openscience.nijmegen@gmail.com" style="color:var(--blue);font-weight:700;">openscience.nijmegen@gmail.com</a>.</p>
+
+      <h2>What data do we collect, and why?</h2>
+      <p><strong>Membership.</strong> When you join via the membership form, we ask for a few basic details and a profile photo. We use these to register you as a member and to show a profile card on our <a href="../pages/members.html" style="color:var(--blue);font-weight:700;">members page</a>. Your name, profile photo and the other profile details shown on that page are publicly visible to anyone who visits this website. Legal basis: your consent.</p>
+      <p><strong>Newsletter.</strong> If you subscribe to our newsletter, we collect your email address, first name and last name, and use them only to send you the newsletter. Becoming a member does not automatically subscribe you to the newsletter; these are two separate sign-ups. Legal basis: your consent.</p>
+      <p><strong>Contact forms and email.</strong> If you contact us or share news or an event with us, we process your name, email address and message to reply to you or to share your news with the community. Legal basis: your consent.</p>
+
+      <h2>Which services do we use?</h2>
+      <p>We use a number of external services to run our community. Some of them are operated by companies outside the European Union, so your data may be processed outside the European Economic Area.</p>
+      <ul>
+        <li><strong>Google (Forms, Sheets, Drive)</strong> for the membership form and the member overview. After your profile photo has been copied to our website, we remove the uploaded original from Google Drive.</li>
+        <li><strong>GitHub (GitHub Pages)</strong> to host this website. Profile photos and the code of the website are stored in a public repository.</li>
+        <li><strong>opensheet.elk.sh</strong> to display the members page based on our member overview.</li>
+        <li><strong>Formspree</strong> to deliver messages from our contact forms to our mailbox.</li>
+        <li><strong>Our newsletter provider (email-provider.eu)</strong> to manage newsletter subscriptions.</li>
+      </ul>
+      <p>These services process data on our behalf or as part of running the website, and have their own privacy policies. As an open science community we would like to move towards open and EU-hosted alternatives where that is practical.</p>
+
+      <h2>Who can see your data?</h2>
+      <p>Information on the members page is visible to everyone. All other data is only accessible to the OSCN organising team. We do not sell your data or share it for marketing purposes.</p>
+
+      <h2>How long do we keep your data?</h2>
+      <p>We keep your membership data for the duration of your membership, plus up to 18 months after you end it, after which it is deleted or anonymised. Newsletter data is kept until you unsubscribe. Emails are kept for as long as needed to answer your question and any follow-up.</p>
+      <p>Note that profile photos that have been published in our public website repository may remain visible in its version history even after we remove them from the website.</p>
+
+      <h2>Your rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>view the data we process about you;</li>
+        <li>have your data corrected, completed or removed, for example by asking us to update or remove your card from the members page;</li>
+        <li>ask us to restrict the processing of your data;</li>
+        <li>receive a digital copy of your data and transfer it to another service provider;</li>
+        <li>withdraw your consent at any time, for example by unsubscribing from the newsletter via the link in any newsletter email. Processing before you withdraw your consent remains lawful.</li>
+      </ul>
+      <p>Email us at <a href="mailto:openscience.nijmegen@gmail.com" style="color:var(--blue);font-weight:700;">openscience.nijmegen@gmail.com</a> to exercise these rights. If you feel we are not handling your data properly, you can file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens).</p>
+
+      <h2>Third-party websites</h2>
+      <p>This privacy statement does not apply to third-party websites we link to. We cannot guarantee how those parties handle your data, so please read their privacy statements.</p>
+
+      <h2>Cookies</h2>
+      <p>This website does not use tracking or analytics cookies, and we do not show advertisements. Some services we link to or use, such as Google Forms, our newsletter provider, Formspree and LinkedIn, may place their own cookies on their own pages. We have no control over those, so please check their cookie policies. You can delete or block cookies at any time via your browser settings.</p>
+
+      <h2>Changes</h2>
+      <p>We may update this statement from time to time. Last updated: September 2026.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo" href="../index.html">
+        <img src="../images/OSCN_logo_transparant.png" alt="OSCN Logo">
+      </a>
+      <p>Open Science Community Nijmegen promotes open, transparent and reproducible research through community building and collaboration.</p>
+    </div>
+    <div class="flinks">
+      <h3>Navigate</h3>
+      <a href="../pages/about.html">About</a>
+      <a href="../pages/resources.html">Resources</a>
+      <a href="../pages/events.html">Events</a>
+      <a href="../pages/news.html">News</a>
+      <a href="../pages/newsletters.html">Newsletters</a>
+      <a href="../pages/members.html">Members</a>
+      <a href="../pages/contact.html">Contact</a>
+      <a href="../pages/join.html">Join</a>
+    </div>
+    <div class="flinks">
+      <h3>Contact</h3>
+      <a href="mailto:openscience.nijmegen@gmail.com">openscience.nijmegen@gmail.com</a>
+      <a class="social-link" href="https://www.linkedin.com/company/open-science-community-nijmegen/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1C12.9 8.8 14.7 7.7 17 7.7c5 0 5.9 3.3 5.9 7.6V24h-5v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-5V8z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div id="newsletter">
+      <h3>Receive our newsletter</h3>
+      <form method="post" action="https://open-science-community-nijmegen.email-provider.eu/subscribe/post/index.php" accept-charset="utf-8" class="footer-form form-op7pq9fkox">
+        <input type="hidden" name="next" value="" />
+        <input type="hidden" name="a" value="ohz7mrmpse" />
+        <input type="hidden" name="l" value="op7pq9fkox" />
+        <label for="id-Kz6LqtiXnQ">Email *</label>
+        <input name="Kz6LqtiXnQ" id="id-Kz6LqtiXnQ" type="email" placeholder="you@example.com" required>
+        <label for="id-P3Px8y6G0Y">First name *</label>
+        <input name="P3Px8y6G0Y" id="id-P3Px8y6G0Y" type="text" placeholder="First name" required>
+        <label for="id-OTxNlZSNlG">Last name *</label>
+        <input name="OTxNlZSNlG" id="id-OTxNlZSNlG" type="text" placeholder="Last name" required>
+        <input type="email" id="email" name="email" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
+        <input type="submit" value="Subscribe">
+      </form>
+      <script src="https://open-science-community-nijmegen.email-provider.eu/subscribe/check/validate.js"></script>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Open Science Community Nijmegen</span>
+    <span><a href="../pages/privacy.html">Privacy &amp; cookies</a></span>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
