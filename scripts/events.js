@@ -48,7 +48,8 @@ const events = [
     shortDescription:
       "A community-driven day of open science, peer exchange, collaboration — and pizza. No fixed programme: you help shape it on the spot.",
     description:
-      'This October, Delft becomes the meeting place for the Dutch open science community with two inspiring back-to-back events. The OSC-NL Barcamp is a community-driven day of open science, peer exchange, collaboration, and pizza. The Barcamp has no predetermined programme — participants propose and shape the sessions together on the spot. From newcomers to experienced practitioners, everyone is welcome to join the conversation and contribute ideas. <a href="https://osc-nl.codeberg.page/content/events/barcamp2026/">Register here</a>.',
+      'This October, Delft becomes the meeting place for the Dutch open science community with two inspiring back-to-back events. The OSC-NL Barcamp is a community-driven day of open science, peer exchange, collaboration, and pizza. The Barcamp has no predetermined programme — participants propose and shape the sessions together on the spot. From newcomers to experienced practitioners, everyone is welcome to join the conversation and contribute ideas. <a href="https://osc-nl.codeberg.page/content/events/barcamp2026/" target="_blank" rel="noopener">Register here</a>.',
+    link: "#"
   },
   {
     id: "national-open-science-festival-2026",
@@ -63,8 +64,8 @@ const events = [
     shortDescription:
       "The place to be for anyone working on or interested in open science — inspiring sessions, practical examples and networking, hosted with TU Delft.",
     description:
-      "Hosted this year together with Delft University of Technology, the National Open Science Festival is the place to be for anyone working on or interested in open science. Expect inspiring sessions, practical examples, networking opportunities, and discussions with researchers, support staff, and open science communities from across the Netherlands. Register for free or submit a contribution via the link below. Whether you join one or both October events, these two days offer a fantastic opportunity to connect and help shape the future of open science together. <a href="https://opensciencefestival.nl/registration">Register here</a>.",
-
+      'Hosted this year together with Delft University of Technology, the National Open Science Festival is the place to be for anyone working on or interested in open science. Expect inspiring sessions, practical examples, networking opportunities, and discussions with researchers, support staff, and open science communities from across the Netherlands. Register for free or submit a contribution via the link below. Whether you join one or both October events, these two days offer a fantastic opportunity to connect and help shape the future of open science together. <a href="https://opensciencefestival.nl/registration" target="_blank" rel="noopener">Register here</a>.',
+    link: "#"
   }
 ];
 
@@ -357,7 +358,8 @@ function openEvent(eventId) {
   }
 
   if (detailDescription) {
-    detailDescription.textContent =
+    /* innerHTML (not textContent) so links in the description are clickable */
+    detailDescription.innerHTML =
       event.description;
   }
 
