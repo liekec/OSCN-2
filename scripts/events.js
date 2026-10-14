@@ -32,7 +32,7 @@ const events = [
     shortDescription:
       "Meet the people behind Open Science in Nijmegen, hear their stories and connect with colleagues over drinks and bites.",
     description:
-      "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!",
+  "Who are the people behind Open Science in Nijmegen, and what are they working on? During our Community Café, community members from HAN, Radboudumc, Radboud University and MPI will take the stage for short presentations, sharing their Open Science initiatives, experiences and tips. After the pitches (approximately around 16:45h), we'll move to The Yard for free drinks, bites and plenty of time to connect with colleagues. Everyone is welcome!<br><br><strong>Presentations:</strong><br>• <a href='../PDF/Events/Max%20Cenci_Open%20Diamond.pdf' target='_blank'>Max Cenci – Open Diamond</a><br>• <a href='../PDF/Events/Julian%20Kosciessa_Open%20Source%20Software.pdf' target='_blank'>Julian Kosciessa – Open Source Software</a><br>• <a href='../PDF/Events/Mengyun%20Wang_Global%20Collaborations.pdf' target='_blank'>Mengyun Wang – Global Collaborations</a><br>• <a href='../PDF/Events/Alex%20Lehr_Open%20Education.pdf' target='_blank'>Alex Lehr – Open Education</a>",
     link: "#"
   },
   {
