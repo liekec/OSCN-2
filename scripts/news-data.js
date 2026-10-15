@@ -11,6 +11,42 @@
 // — path relative to the site root, e.g. "images/news/my-photo.jpg".
 // Leave "image" out (or empty) to fall back to the plain gradient thumb.
 const newsArticles = [
+
+{
+  slug: "looking-back-open-science-week",
+  date: "October 15, 2026",
+  title: "Looking back: Open Science Week in Nijmegen",
+  excerpt: "Two events, one community: a hands-on Coding Café and a Community Café full of curious people and enthusiasm for Open Science.",
+  image: "images/news/open-science-week-1.png",
+  content: `
+    <p>What better way to celebrate Open Science Week than by bringing the community together? On September 17, we did exactly that with two OSCN events in Nijmegen: a hands-on Coding Café in the morning and a Community Café in the afternoon. Two very different events, but with one thing in common: lots of curious people and plenty of enthusiasm for Open Science.</p>
+
+    <h3>CODING CAFÉ</h3>
+    <p>We started the day with a Coding Café on metadata. A Coding Café is a format where researchers come together to code, debug, learn and share their experiences. It’s a space where knowledge can be gained, best practices can be exchanged, and pizzas can be shared. In this Coding Café, Charlie Greene (research software engineer at VU) talked about metadata and autoMETAte, a tool that automatically creates and populates your metadata file. We ended the session with a lot of pizza, sponsored by the eScience Center.</p>
+    <p>Because so much of what we learn comes from sharing our experiences with others, we believe that a Coding Café will be a great way to build and strengthen our community. That is why OSCN will adopt this format. So, if you missed this one: don’t worry, more Coding Cafés are coming! We would love your input to help shape what these events can look like. So, please let us know what topics you would like to see being covered by one of our Coding Cafés. We’re welcoming ideas for starters (e.g., how to start with GitHub) as well as more advanced topics. Anything is possible :D Also, please reach out to us if you would like to be involved in the organization of these Coding Cafés.</p>
+
+    <h3>COMMUNITY CAFÉ</h3>
+    <p>In the afternoon, we swapped our laptops for presentations, drinks, and conversations at the OSCN Community Café. Six speakers from across our community shared how they put Open Science into practice. Each speaker had just five minutes to present their work and experiences, which, as we quickly discovered, is not nearly as much time as it sounds! ⏱️</p>
+
+    <p><strong>The Speakers:</strong></p>
+    <ul>
+      <li>Kris Bevelander, Radboud umc — Citizen Science</li>
+      <li>Alex Lehr, RU — Open Education</li>
+      <li>Meng-Yun (Henrik) Wang, MPI — Replication in Global Collaborations</li>
+      <li>Julian Kosciessa, RU — Open Source Software</li>
+      <li>Maximiliano Cenci, Radboud umc — Diamond Open Access</li>
+      <li>Heleen Pennings, HAN — Reproducibility and Replicability</li>
+    </ul>
+
+    <p>From citizen science to open source software and from replication to open education, the talks showed just how many different ways there are to make research and education more open. Afterwards, over drinks and bites at The Yard, people from different institutions and disciplines met and exchanged ideas.</p>
+    <p>Couldn’t make it to the Community Café, or want to revisit one of the talks? We’ve got you covered! The speakers have kindly shared their presentations, so you can catch up on the talks and explore some of the Open Science work happening across our community.</p>
+
+    <img src="images/news/open-science-week-2.png" alt="Community Café at The Yard" style="max-width:100%;border-radius:8px;margin:1rem 0;">
+
+    <p>A big thank you to everyone who joined us, to all our speakers for sharing their work and experiences, and to the eScience Center for collaborating with us on the Coding Café.</p>
+  `
+},
+   
 {
   slug: "open-science-week",
   date: "September 10, 2026",
