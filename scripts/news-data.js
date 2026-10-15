@@ -52,7 +52,7 @@ const newsArticles = [
   date: "September 10, 2026",
   title: "Celebrate Open Science Week with OSCN!",
   excerpt: "Open Science and Open Education are both growing, but are they also growing towards one another?",
-  image: "images/news/Landscape poster1.png",
+  image: "/images/news/Landscape poster1.png",
   content: `
     <p>On behalf of the OSCN organising team, we are happy to invite you to join us in celebrating National Open Science Week!</p>
     <p>To celebrate together as a community, we’ve organised two special events on Thursday, September 17. We’re excited to finally share them with you – you can find more information below.</p>
