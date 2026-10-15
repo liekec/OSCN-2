@@ -41,7 +41,7 @@ const newsArticles = [
     <p>From citizen science to open source software and from replication to open education, the talks showed just how many different ways there are to make research and education more open. Afterwards, over drinks and bites at The Yard, people from different institutions and disciplines met and exchanged ideas.</p>
     <p>Couldn’t make it to the Community Café, or want to revisit one of the talks? We’ve got you covered! The speakers have kindly shared their presentations, so you can catch up on the talks and explore some of the Open Science work happening across our community.</p>
 
-    <img src="images/news/open-science-week-2.png" alt="Community Café at The Yard" style="max-width:100%;border-radius:8px;margin:1rem 0;">
+    <img src="images/news/open-science-week-2.png" alt="Community Café" style="max-width:100%;border-radius:8px;margin:1rem 0;">
 
     <p>A big thank you to everyone who joined us, to all our speakers for sharing their work and experiences, and to the eScience Center for collaborating with us on the Coding Café.</p>
   `
