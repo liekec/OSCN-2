@@ -469,6 +469,14 @@ footer.site .flinks a:hover{color:#fff;}
   .newsletter-item{flex-direction:column;align-items:flex-start;}
   .member-filters{grid-template-columns:1fr;}
 }
+.news-content a {
+  color: #c8102e;
+  text-decoration: underline;
+}
+
+.news-content a:hover {
+  color: #8f0b21;
+}
 
 /* ============================================================
    CONTACT PAGE
