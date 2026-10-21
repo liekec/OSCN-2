@@ -19,11 +19,13 @@ title: "Radboud University on Codeberg!",
 excerpt: "Looking for an alternative for github? Than Codeberg might be something for you. Radboud University’s Digital Competence Centre has created an organisation on Codeberg, where you can develop and share your research software.",
 image: "images/news/Codeberg_logo.png",
 content: `
+  <div class="artikel-tekst">
   <p>Earlier this year GitHub <a href="https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/" target="_blank" rel="noopener">decided</a> to use all of your interactions with Copilot to train their AI models, unless you opt out (or are a Copilot Business or Enterprise user). This means that even if you use a private repository, Copilot will use your input and the code context of said repo for training purposes. This, together with worries and heightened awareness about <a href="https://www.ru.nl/medewerkers/nieuws/radboud-universiteit-start-programma-digitale-soevereiniteit" target="_blank" rel="noopener">digital sovereignty</a>, has led us to explore alternatives.</p>
 
   <p>Codeberg, a non-profit company based in the EU, has shown a lot of promise. Radboud University’s Digital Competence Centre has therefore created a <a href="https://codeberg.org/radboud-university-nijmegen" target="_blank" rel="noopener">Radboud University organisation on Codeberg</a>! Here you can develop and share your research software and other relevant code and code-related matters. There is documentation to <a href="https://codeberg.org/radboud-university-nijmegen/fair4rs-toolbox/src/branch/main/getting_started.md" target="_blank" rel="noopener">get started</a> and one can easily create repos or migrate existing ones from GitHub. It also tells you <a href="https://codeberg.org/radboud-university-nijmegen#why-not-github-or-gitlab" target="_blank" rel="noopener">how to opt out</a> of GitHub's AI training ;)</p>
 
   <p>So do have a look and join us! For questions, contact Linus Band (linus.band@ru.nl)🦉💻</p>
+  </div>
 `
 },
    
