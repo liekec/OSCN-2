@@ -16,7 +16,7 @@ const newsArticles = [
 slug: "Diamond-reviewer-pledge",
 date: "October 23, 2026",
 title: "The Diamond Reviewer Pledge",
-excerpt: "Looking for an alternative for github? Than Codeberg might be something for you. Radboud University’s Digital Competence Centre has created an organisation on Codeberg, where you can develop and share your research software.",
+excerpt: "Researchers can now sign the Diamond Reviewer Pledge. By doing so, they commit to reviewing at least one article per year for a diamond open access journal: a journal where publishing and reading are free of charge, and which is run by and for the scholarly community.",
 image: "images/news/Diamond%20open.png",
 content: `
   <div class="artikel-tekst">
