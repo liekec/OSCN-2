@@ -13,6 +13,27 @@
 const newsArticles = [
 
 {
+slug: "Diamond-reviewer-pledge",
+date: "October 23, 2026",
+title: "The Diamond Reviewer Pledge",
+excerpt: "Looking for an alternative for github? Than Codeberg might be something for you. Radboud University’s Digital Competence Centre has created an organisation on Codeberg, where you can develop and share your research software.",
+image: "images/news/Diamond%20open.png",
+content: `
+  <div class="artikel-tekst">
+  <p>Researchers can now sign the Diamond Reviewer Pledge. By doing so, they commit to reviewing at least one article per year for a diamond open access journal: a journal where publishing and reading are free of charge, and which is run by and for the scholarly community.</p>
+
+   <h3>Using review capacity intentionally</h3>
+   <p>The initiative was set up by Steven Verheye, Assistant Professor of Cognitive Psychology at Erasmus University Rotterdam, and Lukas Röseler, postdoctoral researcher at Universität Münster. According to the initiators, it is a minimal commitment, intended to ensure that part of the unpaid reviewing time flows back to journals that support open research.</p>
+
+  <p>The pledge was launched during Peer Review Week (14-18 September). This year’s theme is capacity: how can the research community cope with a growing number of submissions and a reviewer pool under pressure? The initiative offers researchers a small, concrete way to be intentional about where they direct their reviewing capacity.</p>
+
+   <h3>How to take part</h3>
+   <p>You can sign the pledge <a href="forrt.org/diamond-reviewer/#home" target="_blank" rel="noopener">here</a>. Signatories can also enlist in a future reviewer database for diamond OA journals, so that editors can invite them to review. They can also use the Diamond Reviewer Badge on their website, in their CV or in presentations./p>
+  </div>
+`
+},
+
+{
 slug: "Radboud-university-on-codeberg",
 date: "October 21, 2026",
 title: "Radboud University on Codeberg!",
